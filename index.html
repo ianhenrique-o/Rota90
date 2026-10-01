@@ -1,1434 +1,1998 @@
 <!doctype html>
 <html lang="pt-BR">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<meta name="theme-color" content="#121512">
-<title>Rota 90 | Ian Henrique</title>
-<meta name="description" content="Em 90 dias, sua empresa passa a ter um sistema organizado para gerar oportunidades e fechar contratos">
-<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='16' fill='%23101211'/%3E%3Cpath d='M15 45V19h15c16 0 21 19 7 24l12 2H35L23 35v10zm8-17h9c6 0 6-3 0-3h-9z' fill='%23dabda3'/%3E%3C/svg%3E">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#101211">
+  <title>Rota 90 | Ian Henrique</title>
+  <meta name="description" content="Em 90 dias, sua empresa passa a ter um sistema organizado para gerar oportunidades e fechar contratos">
 
-<style>
-@font-face{
-  font-family:Manrope;
-  src:url("https://cdn.jsdelivr.net/npm/@fontsource-variable/manrope@5.3.0/files/manrope-latin-wght-normal.woff2") format("woff2");
-  font-weight:200 800;
-  font-display:swap;
-}
-@font-face{
-  font-family:Instrument;
-  src:url("https://cdn.jsdelivr.net/npm/@fontsource/instrument-serif@5.3.0/files/instrument-serif-latin-400-italic.woff2") format("woff2");
-  font-style:italic;
-  font-weight:400;
-  font-display:swap;
-}
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='16' fill='%23101211'/%3E%3Cpath d='M15 45V19h15c16 0 21 19 7 24l12 2H35L23 35v10zm8-17h9c6 0 6-3 0-3h-9z' fill='%23dabda3'/%3E%3C/svg%3E">
 
-:root{
-  --bg:#121512;
-  --panel:#1e241d;
-  --text:#f0eee4;
-  --muted:#babeb1;
-  --accent:#d6b899;
-  --paper:#e9e7dd;
-  --ink:#252d22;
-  --max:1160px;
-}
-*{box-sizing:border-box}
-html{scroll-behavior:smooth;scroll-padding-top:24px}
-body{
-  margin:0;
-  background:var(--bg);
-  color:var(--text);
-  font-family:Manrope,Arial,sans-serif;
-  -webkit-font-smoothing:antialiased;
-}
-a{color:inherit;text-decoration:none}
-button,input{font:inherit}
-button{cursor:pointer;color:inherit}
-a,button,input{-webkit-tap-highlight-color:transparent}
-a:focus-visible,button:focus-visible,input:focus-visible,summary:focus-visible{
-  outline:2px solid var(--accent);
-  outline-offset:5px;
-}
-h1,h2,h3,p{margin:0}
-h1,h2,h3{font-weight:500;letter-spacing:-.052em}
-h1{font-size:clamp(2.4rem,3.5vw,3.22rem);line-height:1.12}
-h2{font-size:clamp(2rem,3vw,2.75rem);line-height:1.13;text-wrap:balance}
-h3{font-size:1.5rem;line-height:1.2}
-h1 em,h2 em{
-  font-family:Instrument,Georgia,serif;
-  font-weight:400;
-  font-size:1.21em;
-  line-height:.83;
-  letter-spacing:-.02em;
-  color:var(--accent);
-}
-p,li{font-size:1rem;line-height:1.5;color:var(--muted)}
-p+p{margin-top:20px}
-strong{font-weight:650;color:var(--text)}
-.shell{width:min(calc(100% - 152px),var(--max));margin:auto}
-.section{padding:108px 0}
-.section-heading{max-width:770px;text-align:center;margin:0 auto 42px}
-.section-heading h2+p{margin-top:23px}
-.section-heading p{max-width:690px;margin-left:auto;margin-right:auto}
-.section-heading p+p{margin-top:18px}
-.centered{text-align:center}
-.icon{
-  display:block;
-  width:24px;
-  height:24px;
-  fill:none;
-  stroke:currentColor;
-  stroke-width:1.4;
-  stroke-linecap:round;
-  stroke-linejoin:round;
-  flex-shrink:0;
-}
-.icon-defs{position:absolute;width:0;height:0;overflow:hidden}
-.header{height:100px;position:absolute;inset:0 0 auto;z-index:3}
-.header-inner{height:100%;display:flex;align-items:center}
-.wordmark{font-size:2rem;font-weight:650;letter-spacing:-.085em;line-height:1}
-.wordmark span{font-weight:300;color:var(--accent)}
-.button{
-  min-height:58px;
-  display:inline-flex;
-  align-items:center;
-  justify-content:space-between;
-  gap:34px;
-  border:1px solid #a8977f;
-  border-radius:4px;
-  padding:8px 9px 8px 23px;
-  font-size:.875rem;
-  font-weight:600;
-  line-height:1.25;
-  transition:background .25s,color .25s,box-shadow .25s;
-  background:#e0c5a6;
-  color:#252c23;
-  box-shadow:0 6px 28px #0002;
-}
-.button>span{
-  display:grid;
-  place-items:center;
-  width:38px;
-  height:38px;
-  border-left:1px solid #9d907b;
-  padding-left:9px;
-  transition:transform .25s;
-}
-.button>span .icon{width:23px}
-.button:hover{background:#f3e0c8;box-shadow:0 8px 32px #d8b38c1a}
-.button:hover>span{transform:translate(2px,-2px)}
+  <link rel="preload" href="https://cdn.jsdelivr.net/npm/@fontsource-variable/manrope@5.3.0/files/manrope-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="https://cdn.jsdelivr.net/npm/@fontsource/instrument-serif@5.3.0/files/instrument-serif-latin-400-italic.woff2" as="font" type="font/woff2" crossorigin>
 
-/* Abertura */
-.hero{
-  min-height:96svh;
-  padding:0;
-  position:relative;
-  isolation:isolate;
-  display:flex;
-  align-items:center;
-  overflow:hidden;
-  background:#121612;
-}
-.hero-atmosphere{
-  position:absolute;
-  inset:0;
-  z-index:-1;
-  background:
-    radial-gradient(ellipse at 91% 15%,#88745417,transparent 60%),
-    linear-gradient(120deg,#111512 44%,#24291f 100%);
-}
-.hero-atmosphere:after{
-  content:"";
-  position:absolute;
-  width:44%;
-  height:120%;
-  top:-18%;
-  right:-8%;
-  background:linear-gradient(100deg,transparent,#c4b79b0a,transparent);
-  transform:rotate(-20deg);
-}
-.hero-grid{
-  display:grid;
-  grid-template-columns:1.2fr .84fr;
-  gap:66px;
-  align-items:center;
-  padding:122px 0 105px;
-}
-.hero-copy{position:relative;z-index:2}
-.hero h1{max-width:650px}
-.hero-copy>p{margin:28px 0 32px;max-width:555px;font-size:1rem;line-height:1.48}
+  <style>
+    @font-face {
+      font-family: Manrope;
+      src: url("https://cdn.jsdelivr.net/npm/@fontsource-variable/manrope@5.3.0/files/manrope-latin-wght-normal.woff2") format("woff2");
+      font-weight: 200 800;
+      font-display: swap;
+    }
 
-/* Fotos */
-.portrait-composition{position:relative;padding:0 15px 15px 0}
-.portrait-slot{
-  width:100%;
-  min-height:580px;
-  height:68svh;
-  max-height:810px;
-  position:relative;
-  background:#272d23;
-  overflow:hidden;
-  clip-path:polygon(0 0,calc(100% - 42px) 0,100% 42px,100% 100%,0 100%);
-  isolation:isolate;
-}
-.portrait-slot img{
-  position:absolute;
-  inset:0;
-  display:block;
-  width:100%;
-  height:100%;
-  object-fit:cover;
-  object-position:center 30%;
-}
-.portrait-corner{
-  position:absolute;
-  inset:21px 0 0 21px;
-  border-right:1px solid #9a997352;
-  border-bottom:1px solid #9a997352;
-  z-index:-1;
-}
-.scroll-cue{
-  position:absolute;
-  left:50%;
-  bottom:26px;
-  width:35px;
-  height:35px;
-  display:grid;
-  place-items:center;
-  color:#d3c4aa;
-}
-.scroll-cue .icon{
-  transform:rotate(90deg);
-  width:20px;
-  animation:scroll-cue 2.6s ease-in-out infinite;
-}
+    @font-face {
+      font-family: Instrument;
+      src: url("https://cdn.jsdelivr.net/npm/@fontsource/instrument-serif@5.3.0/files/instrument-serif-latin-400-italic.woff2") format("woff2");
+      font-style: italic;
+      font-weight: 400;
+      font-display: swap;
+    }
 
-/* Contexto */
-.problem{background:#141713}
-.problem>.shell>.section-heading{max-width:745px}
-.text-panel{max-width:790px;margin:auto;padding:0 26px}
-.text-panel p{max-width:720px;margin-left:auto;margin-right:auto}
-.text-panel p:first-child{color:#d6d9cc;font-size:1.0625rem}
-.text-panel p:last-child{
-  margin-top:30px;
-  background:#242b21;
-  padding:26px 31px;
-  border-radius:2px;
-  color:#d7d9cc;
-}
-.attempts{margin-top:94px}
-.attempt-stack{max-width:860px;margin:auto;display:grid;gap:18px}
-.attempt-card{
-  background:#22291f;
-  border-radius:5px;
-  padding:32px 36px;
-  display:grid;
-  grid-template-columns:78px 1fr;
-  gap:27px;
-  align-items:center;
-  transition:background .35s,transform .35s;
-}
-.attempt-card:nth-child(2){background:#282b22}
-.attempt-card:nth-child(3){background:#2d2c22}
-.attempt-card:hover{transform:translateY(-3px);background:#34392a}
-.attempt-icon{
-  height:76px;
-  display:grid;
-  place-items:center;
-  color:#dcc4a7;
-  background:linear-gradient(140deg,#6a715140,#151b13);
-  border-radius:12px;
-  box-shadow:inset 1px 1px #b5b58c25,0 10px 22px #0002;
-  transform:rotate(-5deg);
-  transition:transform .4s;
-}
-.attempt-card:nth-child(2) .attempt-icon{transform:rotate(5deg)}
-.attempt-card:hover .attempt-icon{transform:rotate(0)}
-.attempt-icon .icon{width:33px;height:33px;stroke-width:1.2}
-.attempt-card h3{margin-bottom:13px;color:var(--text);font-size:1.4rem}
-.attempt-card p{max-width:665px;line-height:1.46}
-.section-ending{
-  max-width:680px;
-  margin:32px auto 0;
-  font-family:Instrument,Georgia,serif;
-  font-style:italic;
-  color:#cdb79c;
-  font-size:1.55rem;
-  line-height:1.22;
-  letter-spacing:-.015em;
-}
+    :root {
+      --bg: #121512;
+      --panel: #1e241d;
+      --text: #f0eee4;
+      --muted: #babeb1;
+      --accent: #d6b899;
+      --paper: #e9e7dd;
+      --ink: #252d22;
+      --max: 1160px;
+    }
 
-/* Calculadora */
-.acquisition{background:var(--paper);color:var(--ink)}
-.acquisition p,.acquisition li{color:#626753}
-.acquisition h2{max-width:690px;margin:auto}
-.acquisition strong{color:var(--ink)}
-.calculator{
-  max-width:860px;
-  margin:auto;
-  background:#ddded1;
-  padding:29px;
-  border-radius:7px;
-  box-shadow:0 20px 70px #363d2810;
-}
-.example-title{font-size:1rem;text-align:center;margin-bottom:27px}
-.calc-grid{display:grid;grid-template-columns:1fr 1fr;gap:15px}
-.calc-cell{background:#f1f1e7;border-radius:3px;padding:28px;min-width:0}
-.calc-cell label{display:block;font-size:1rem;line-height:1.5;min-height:55px;color:#404b32}
-.calc-cell strong{font-weight:650;color:#263a1d}
-.calc-cell input{
-  display:block;
-  width:100%;
-  height:24px;
-  accent-color:#536541;
-  margin:20px 0 0;
-  cursor:pointer;
-  appearance:none;
-  background:transparent;
-}
-.calc-cell input::-webkit-slider-runnable-track{height:3px;background:#bfc5b0;border-radius:3px}
-.calc-cell input::-webkit-slider-thumb{
-  appearance:none;
-  margin-top:-7px;
-  width:17px;
-  height:17px;
-  border-radius:50%;
-  background:#4c6040;
-  box-shadow:0 0 0 5px #4c604010;
-}
-.calc-cell input::-moz-range-track{height:3px;background:#bfc5b0}
-.calc-cell input::-moz-range-thumb{width:17px;height:17px;border:0;background:#4c6040;border-radius:50%}
-.result-cell{
-  display:grid;
-  grid-template-columns:26px 1fr;
-  gap:15px;
-  align-items:start;
-  background:#293423;
-  box-shadow:inset 0 1px #a8b38c18;
-}
-.result-cell:last-child{background:#49573a}
-.result-cell .icon{color:#d4c3a4;width:23px;height:23px;margin-top:2px}
-.result-cell p{font-size:.9375rem;line-height:1.45;color:#d6decb}
-.result-cell strong{
-  display:block;
-  color:#f3ecd6;
-  font-weight:450;
-  font-size:1.8rem;
-  line-height:1.18;
-  margin-top:12px;
-  letter-spacing:-.05em;
-}
-.result-cell strong span{font-size:1.24em}
-.calculator-ending{max-width:730px;margin:32px auto 0;text-align:center}
-.calculator-ending h3{
-  font-family:Instrument,Georgia,serif;
-  font-style:italic;
-  font-size:2.25rem;
-  margin:16px auto 22px;
-  max-width:660px;
-  line-height:1.1;
-  letter-spacing:-.025em;
-}
-.calculator-ending p:last-child{font-size:1rem}
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; scroll-padding-top: 24px; }
 
-/* Carrossel */
-.route{background:#172015;position:relative;overflow:hidden}
-.route:before{
-  content:"";
-  position:absolute;
-  inset:0;
-  background:radial-gradient(ellipse at 50% 65%,#74805725,transparent 62%);
-  pointer-events:none;
-}
-.route .section-heading{position:relative;max-width:710px;margin-bottom:43px}
-.route h2 em{display:block;margin-top:8px}
-.carousel{max-width:1100px;margin:0 auto;position:relative;padding:0 45px}
-.slides{
-  position:relative;
-  height:466px;
-  perspective:1200px;
-  touch-action:pan-y;
-  user-select:none;
-  isolation:isolate;
-  outline-offset:10px;
-}
-.slide{
-  position:absolute;
-  left:50%;
-  top:50%;
-  width:520px;
-  min-height:450px;
-  padding:29px;
-  border-radius:22px;
-  display:flex;
-  flex-direction:column;
-  gap:22px;
-  background:#d1d3bf;
-  color:#23341e;
-  box-shadow:0 18px 45px #0003;
-  transform:translate(calc(-50% + var(--shift,0px)),-50%) scale(var(--scale,1));
-  opacity:var(--opacity,0);
-  z-index:var(--layer,0);
-  transition:transform .6s cubic-bezier(.22,.68,.2,1),opacity .45s,box-shadow .45s,background .45s;
-  will-change:transform;
-  pointer-events:none;
-}
-.slide.is-active{background:#26372b;color:#f3eee1;box-shadow:0 28px 65px #0006;pointer-events:auto}
-.slide.is-neighbor{pointer-events:auto}
-.slide.is-neighbor .phase-copy p{visibility:hidden}
-.slide.is-neighbor .phase-art{height:220px;position:absolute;left:29px;right:29px;bottom:29px;width:auto}
-.slide.is-neighbor .phase-art svg{height:175px;width:175px}
-.slide h3{font-size:1.5rem;line-height:1.17;letter-spacing:-.045em;margin-bottom:18px;color:#293c24}
-.slide p{font-size:.9375rem;line-height:1.45;color:#51624a}
-.slide.is-active h3{color:#eee8da}
-.slide.is-active p{color:#c8d1c0}
-.phase-copy{position:relative;z-index:1}
-.phase-art{
-  height:102px;
-  width:100%;
-  margin-top:auto;
-  display:grid;
-  place-items:center;
-  overflow:hidden;
-  border-radius:9px;
-  background:linear-gradient(120deg,#b5bda0,#e4e3cb 56%,#b4bf9d);
-  position:relative;
-  isolation:isolate;
-}
-.phase-art:before,.phase-art:after{
-  content:"";
-  position:absolute;
-  z-index:-1;
-  width:190px;
-  height:190px;
-  border:35px solid #5f734b12;
-  border-radius:45px;
-  transform:rotate(35deg);
-  left:-75px;
-  top:-70px;
-}
-.phase-art:after{left:auto;right:-50px;top:-10px}
-.phase-art svg{width:105px;height:105px;filter:drop-shadow(0 8px 9px #33492212)}
-.slide.is-active .phase-art{background:linear-gradient(120deg,#a5b28d,#d8dcc2 56%,#8fa47a)}
-.phase-select{
-  position:absolute;
-  inset:0;
-  width:100%;
-  height:100%;
-  border:0;
-  border-radius:inherit;
-  background:transparent;
-  z-index:2;
-  cursor:pointer;
-}
-.phase-select[hidden]{display:none}
-.phase-select:focus-visible{outline:2px solid #d9bd9b;outline-offset:5px}
-.carousel-controls{display:flex;justify-content:center;align-items:center;margin-top:26px;height:36px}
-.round-button{
-  position:absolute;
-  top:calc((100% - 62px)/2);
-  transform:translateY(-50%);
-  width:40px;
-  height:40px;
-  border:0;
-  border-radius:50%;
-  background:#dfdfca;
-  color:#2e4027;
-  display:grid;
-  place-items:center;
-  z-index:6;
-  box-shadow:0 5px 22px #0003;
-  transition:background .25s,scale .25s;
-}
-.round-button:hover{background:#f3eddc;scale:1.06}
-.round-button .icon{width:19px;height:19px}
-#prev{left:0}
-#next{right:0}
-#prev .icon{transform:rotate(180deg)}
-.carousel-dots{display:flex;gap:0;align-items:center}
-.carousel-dots button{border:0;width:30px;height:36px;background:transparent;padding:0;display:grid;place-items:center}
-.carousel-dots button:before{
-  content:"";
-  width:6px;
-  height:6px;
-  border-radius:50%;
-  background:#697b54;
-  transition:width .25s,background .25s;
-}
-.carousel-dots button[aria-current=true]:before{width:22px;border-radius:5px;background:#d8bea0}
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--text);
+      font-family: Manrope, Arial, sans-serif;
+      -webkit-font-smoothing: antialiased;
+    }
 
-/* Execução */
-.working{background:#121612;padding-bottom:115px}
-.work-pair{max-width:860px;display:grid;grid-template-columns:1fr 1fr;gap:20px;margin:auto}
-.work-card{background:#20291c;padding:33px;border-radius:4px;border-top:2px solid #9aab7c}
-.work-card:nth-child(2){background:#272a22;border-color:#bca486}
-.work-card h3{color:#e0c7a6;font-size:1.5rem;margin-bottom:18px}
-.work-card p{font-size:.9375rem;line-height:1.48}
-.deliver-panel{max-width:810px;margin:45px auto 0;padding:0 15px}
-.deliver-panel h3{
-  font-family:Instrument,Georgia,serif;
-  font-style:italic;
-  font-size:2.15rem;
-  line-height:1.13;
-  text-align:center;
-  max-width:620px;
-  margin:0 auto 32px;
-  letter-spacing:-.025em;
-  color:#d2bda0;
-}
-.deliver-panel ul,.fit-card ul{margin:0;padding:0;list-style:none}
-.deliver-panel li,.fit-card li{position:relative;padding-left:28px;margin-top:18px;font-size:1rem;line-height:1.44}
-.deliver-panel li:first-child,.fit-card li:first-child{margin-top:0}
-.deliver-panel li:before,.fit-card li:before{
-  content:"";
-  position:absolute;
-  width:10px;
-  height:6px;
-  border-left:1px solid #b2c29b;
-  border-bottom:1px solid #b2c29b;
-  left:1px;
-  top:7px;
-  transform:rotate(-45deg);
-}
-.fit-block{max-width:860px;margin:100px auto 0}
-.fit-card{background:#ced2b7;padding:42px 47px;border-radius:5px;color:#273820;box-shadow:0 16px 40px #0002}
-.fit-card h2{text-align:center;font-size:2.35rem;margin-bottom:32px}
-.fit-card li{color:#44533a}
-.fit-card li:before{border-color:#5c7248}
-.fit-no{margin-top:20px;background:#22281e;box-shadow:none;color:#dedbc8;padding:34px 47px}
-.fit-no h2{font-family:Instrument,Georgia,serif;font-style:italic;font-size:2.35rem}
-.fit-no li{color:#aeb9a0}
-.fit-no li:before{width:8px;height:1px;background:#8b9d76;transform:none;top:11px;border:0}
-.fit-note{max-width:740px;margin:32px auto 0;font-size:.9375rem;line-height:1.48}
+    a { color: inherit; text-decoration: none; }
+    button, input { font: inherit; }
+    button { cursor: pointer; color: inherit; }
+    a, button, input { -webkit-tap-highlight-color: transparent; }
 
-/* Sobre */
-.about{background:#252d20}
-.about-grid{display:grid;grid-template-columns:.83fr 1.17fr;gap:66px;align-items:center}
-.about .portrait-slot{height:680px;min-height:680px;max-height:none;background:#323c2a}
-.about-copy h2{margin-bottom:29px;max-width:510px}
-.about-copy h2 em{white-space:nowrap}
-.about-copy p{font-size:.9375rem;line-height:1.5;color:#c3cab7}
-.about-copy p+p{margin-top:21px}
+    a:focus-visible,
+    button:focus-visible,
+    input:focus-visible,
+    summary:focus-visible {
+      outline: 2px solid var(--accent);
+      outline-offset: 5px;
+    }
 
-/* Encerramento */
-.closing{background:#121612;padding-bottom:44px;position:relative}
-.closing .section-heading{max-width:780px}
-.closing .section-heading h2{max-width:730px;margin:0 auto 28px}
-.closing .section-heading p{max-width:710px}
-.faq{max-width:790px;margin:52px auto 0;display:grid;gap:0}
-.faq details{border-top:1px solid #525c414d;padding:0 20px;background:transparent;transition:background .25s}
-.faq details:last-child{border-bottom:1px solid #525c414d}
-.faq details[open]{background:#20291b}
-.faq summary{
-  list-style:none;
-  cursor:pointer;
-  padding:25px 0;
-  display:grid;
-  grid-template-columns:1fr 22px;
-  gap:20px;
-  align-items:center;
-  text-align:center;
-  line-height:1.4;
-  font-size:.9375rem;
-}
-.faq summary::-webkit-details-marker{display:none}
-.faq summary strong{font-weight:500}
-.faq summary .icon{width:19px;height:19px;color:#d4bc9d;transition:transform .25s}
-.faq details[open] summary .icon{transform:rotate(45deg)}
-.faq details p{text-align:center;padding:0 14px 26px;font-size:.9375rem}
-.closing-cta{max-width:700px;margin:39px auto 0;text-align:center}
-.closing-cta>p{margin-top:25px;font-size:.9375rem}
-.closing footer{display:flex;justify-content:center;margin-top:88px}
-.closing footer .wordmark{font-size:3.5rem;opacity:.72}
-.motion .reveal{
-  opacity:0;
-  transform:translateY(22px);
-  transition:opacity .8s ease,transform .8s cubic-bezier(.2,.7,.2,1);
-}
-.motion .reveal.is-visible{opacity:1;transform:none}
+    h1, h2, h3, p { margin: 0; }
+    h1, h2, h3 { font-weight: 500; letter-spacing: -.052em; }
+    h1 { font-size: clamp(2.4rem, 3.5vw, 3.22rem); line-height: 1.12; }
+    h2 { font-size: clamp(2rem, 3vw, 2.75rem); line-height: 1.13; text-wrap: balance; }
+    h3 { font-size: 1.5rem; line-height: 1.2; }
 
-@keyframes scroll-cue{
-  0%,100%{translate:0 -3px;opacity:.4}
-  50%{translate:0 3px;opacity:1}
-}
+    h1 em, h2 em {
+      font-family: Instrument, Georgia, serif;
+      font-weight: 400;
+      font-size: 1.21em;
+      line-height: .83;
+      letter-spacing: -.02em;
+      color: var(--accent);
+    }
 
-@media(min-width:1600px){
-  .shell{width:min(calc(100% - 220px),var(--max))}
-  .hero-grid{gap:75px}
-  .hero h1{font-size:3.25rem}
-}
-@media(max-width:1100px){
-  .shell{width:calc(100% - 96px)}
-  .hero-grid{gap:40px;grid-template-columns:1.16fr .84fr}
-  .hero h1{font-size:2.7rem}
-  .hero-copy>p{font-size:.9375rem}
-  .portrait-slot{height:68svh;min-height:540px}
-  .about-grid{gap:40px}
-  .about .portrait-slot{height:740px;min-height:740px}
-  .carousel{padding:0 35px}
-  .slide{width:500px}
-  .round-button{width:37px;height:37px}
-}
-@media(max-width:780px){
-  .shell{width:calc(100% - 56px)}
-  .section{padding:78px 0}
-  .header{height:83px}
-  .hero{padding:0;min-height:96svh}
-  .hero-grid{grid-template-columns:1fr;gap:44px;padding:118px 0 91px}
-  .hero-copy{max-width:650px;margin:auto}
-  .hero h1{font-size:clamp(2.25rem,5.5vw,2.9rem)}
-  .hero-copy>p{font-size:1rem}
-  .hero .portrait-composition{width:min(100%,490px);margin:auto}
-  .hero .portrait-slot{height:550px;min-height:0}
-  .scroll-cue{bottom:25px}
-  .section-heading{margin-bottom:33px}
-  .text-panel{padding:0 14px}
-  .attempts{margin-top:70px}
-  .attempt-card{padding:28px;gap:24px;grid-template-columns:60px 1fr}
-  .attempt-icon{height:60px}
-  .attempt-icon .icon{width:29px;height:29px}
-  .calc-grid{gap:12px}
-  .calculator{padding:23px}
-  .calc-cell{padding:24px}
-  .result-cell strong{font-size:1.5rem}
-  .work-pair{grid-template-columns:1fr}
-  .work-card{padding:30px}
-  .work-card p{font-size:1rem}
-  .deliver-panel{padding:0 9px}
-  .fit-block{margin-top:75px}
-  .fit-card{padding:35px}
-  .fit-card h2{font-size:2rem}
-  .about-grid{grid-template-columns:1fr;gap:43px}
-  .about .portrait-composition{width:min(100%,490px);margin:auto}
-  .about .portrait-slot{height:550px;min-height:0}
-  .about-copy{max-width:640px;margin:auto}
-  .about-copy h2{text-align:center;max-width:none}
-  .about-copy p{font-size:1rem}
-  .closing{padding-bottom:38px}
-  .route .shell{width:calc(100% - 48px)}
-  .carousel{padding:0 26px}
-  .slide{width:min(470px,78vw);padding:27px;min-height:465px;border-radius:18px}
-  .slide h3{font-size:1.4rem}
-  .slide p{font-size:.9375rem}
-  .phase-art{height:100px}
-  .round-button{width:35px;height:35px}
-  .route .section-heading{margin-bottom:35px}
-}
-@media(max-width:480px){
-  .shell{width:calc(100% - 44px)}
-  .section{padding:64px 0}
-  .header{height:79px}
-  .wordmark{font-size:1.85rem}
-  .hero{padding:0}
-  .hero-grid{padding:112px 0 79px;gap:40px}
-  .hero h1{font-size:2.06rem;line-height:1.14;letter-spacing:-.053em}
-  .hero h1 em{font-size:1.16em}
-  .hero-copy>p{font-size:.9375rem;line-height:1.49;margin:24px 0 29px}
-  .button{font-size:.8125rem;gap:24px;padding-left:19px;min-height:55px;max-width:100%}
-  .button>span{width:32px;height:34px}
-  .hero .portrait-slot{height:400px}
-  .portrait-composition{padding:0 11px 11px 0}
-  .portrait-corner{inset:14px 0 0 14px}
-  .portrait-slot{clip-path:polygon(0 0,calc(100% - 30px) 0,100% 30px,100% 100%,0 100%)}
-  .scroll-cue{bottom:19px}
-  .section-heading{margin-bottom:29px}
-  .section-heading h2{font-size:1.95rem;line-height:1.15;letter-spacing:-.045em}
-  .section-heading h2+p{margin-top:21px}
-  .section-heading p{font-size:.9375rem}
-  .text-panel{padding:0 2px}
-  .text-panel p{font-size:.9375rem;line-height:1.5}
-  .text-panel p:first-child{font-size:1rem}
-  .text-panel p:last-child{padding:24px 19px}
-  .attempts{margin-top:65px}
-  .attempt-card{padding:25px;grid-template-columns:1fr;gap:21px}
-  .attempt-icon{width:54px;height:54px}
-  .attempt-icon .icon{width:27px;height:27px}
-  .attempt-card h3{font-size:1.3rem}
-  .attempt-card p{font-size:.9375rem;line-height:1.48}
-  .section-ending{margin-top:29px;font-size:1.45rem}
-  .calculator{padding:16px}
-  .example-title{font-size:.9375rem;margin-bottom:20px}
-  .calc-grid{grid-template-columns:1fr;gap:12px}
-  .calc-cell{padding:23px}
-  .calc-cell label{min-height:0;font-size:.9375rem}
-  .calc-cell input{margin-top:14px}
-  .result-cell strong{font-size:1.5rem}
-  .calculator-ending{margin-top:29px}
-  .calculator-ending h3{font-size:1.85rem}
-  .calculator-ending p,.calculator-ending p:last-child{font-size:.9375rem}
-  .work-card{padding:27px}
-  .work-card h3{font-size:1.4rem}
-  .work-card p{font-size:.9375rem}
-  .deliver-panel h3{font-size:1.9rem}
-  .deliver-panel li,.fit-card li{padding-left:25px;margin-top:19px;font-size:.9375rem}
-  .fit-card{padding:30px 25px}
-  .fit-card h2{font-size:1.8rem;margin-bottom:28px}
-  .fit-no h2{font-size:2.1rem}
-  .fit-note{margin-top:29px;font-size:.9375rem}
-  .about .portrait-slot{height:420px}
-  .about-copy h2{font-size:1.95rem}
-  .about-copy p{font-size:.9375rem;line-height:1.5}
-  .faq{margin-top:42px}
-  .faq details{padding:0 13px}
-  .faq summary{grid-template-columns:1fr 20px;gap:15px;font-size:.9375rem;padding:24px 0}
-  .faq details p{font-size:.9375rem;line-height:1.48;padding:0 4px 24px}
-  .closing-cta{margin-top:34px}
-  .closing footer{margin-top:64px}
-  .closing{padding-bottom:34px}
-  .route .shell{width:calc(100% - 28px)}
-  .route .section-heading{padding:0 8px}
-  .carousel{padding:0 13px}
-  .slides{height:575px}
-  .slide{width:calc(100vw - 88px);padding:23px 21px;gap:20px;min-height:505px;border-radius:17px}
-  .slide h3{font-size:1.25rem;line-height:1.2;margin-bottom:17px}
-  .slide p{font-size:.875rem;line-height:1.47}
-  .phase-art{height:88px;border-radius:7px}
-  .slide.is-neighbor .phase-art{left:21px;right:21px;bottom:23px;height:235px}
-  .phase-art svg{width:90px;height:90px}
-  .round-button{width:31px;height:31px}
-  .round-button .icon{width:17px;height:17px}
-  #prev{left:-3px}
-  #next{right:-3px}
-  .carousel-controls{margin-top:21px}
-  .carousel-dots button{width:28px}
-}
-@media(prefers-reduced-motion:reduce){
-  html{scroll-behavior:auto}
-  *,*:before,*:after{animation:none!important;transition:none!important}
-  .motion .reveal{opacity:1;transform:none}
-}
-</style>
+    p, li { font-size: 1rem; line-height: 1.5; color: var(--muted); }
+    p + p { margin-top: 20px; }
+    strong { font-weight: 650; color: var(--text); }
+
+    .shell { width: min(calc(100% - 152px), var(--max)); margin: auto; }
+    .section { padding: 108px 0; }
+    .section-heading { max-width: 770px; text-align: center; margin: 0 auto 42px; }
+    .section-heading h2 + p { margin-top: 23px; }
+    .section-heading p { max-width: 690px; margin-left: auto; margin-right: auto; }
+    .section-heading p + p { margin-top: 18px; }
+    .centered { text-align: center; }
+
+    .icon {
+      display: block;
+      width: 24px;
+      height: 24px;
+      fill: none;
+      stroke: currentColor;
+      stroke-width: 1.4;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+      flex-shrink: 0;
+    }
+
+    .icon-defs { position: absolute; width: 0; height: 0; overflow: hidden; }
+    .header { height: 100px; position: absolute; inset: 0 0 auto; z-index: 3; }
+    .header-inner { height: 100%; display: flex; align-items: center; }
+    .wordmark { font-size: 2rem; font-weight: 650; letter-spacing: -.085em; line-height: 1; }
+    .wordmark span { font-weight: 300; color: var(--accent); }
+
+    .button {
+      min-height: 58px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 34px;
+      border: 1px solid #a8977f;
+      border-radius: 4px;
+      padding: 8px 9px 8px 23px;
+      font-size: .875rem;
+      font-weight: 600;
+      line-height: 1.25;
+      transition: background .25s, color .25s, box-shadow .25s;
+      background: #e0c5a6;
+      color: #252c23;
+      box-shadow: 0 6px 28px #0002;
+    }
+
+    .button > span {
+      display: grid;
+      place-items: center;
+      width: 38px;
+      height: 38px;
+      border-left: 1px solid #9d907b;
+      padding-left: 9px;
+      transition: transform .25s;
+    }
+
+    .button > span .icon { width: 23px; }
+    .button:hover { background: #f3e0c8; box-shadow: 0 8px 32px #d8b38c1a; }
+    .button:hover > span { transform: translate(2px, -2px); }
+
+    /* Abertura */
+
+    .hero {
+      min-height: 96svh;
+      padding: 0;
+      position: relative;
+      isolation: isolate;
+      display: flex;
+      align-items: center;
+      overflow: hidden;
+      background: #121612;
+    }
+
+    .hero-atmosphere {
+      position: absolute;
+      inset: 0;
+      z-index: -1;
+      background:
+        radial-gradient(ellipse at 91% 15%, #88745417, transparent 60%),
+        linear-gradient(120deg, #111512 44%, #24291f 100%);
+    }
+
+    .hero-atmosphere:after {
+      content: "";
+      position: absolute;
+      width: 44%;
+      height: 120%;
+      top: -18%;
+      right: -8%;
+      background: linear-gradient(100deg, transparent, #c4b79b0a, transparent);
+      transform: rotate(-20deg);
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.2fr .84fr;
+      gap: 66px;
+      align-items: center;
+      padding: 122px 0 105px;
+    }
+
+    .hero-copy { position: relative; z-index: 2; }
+    .hero h1 { max-width: 650px; }
+    .hero-copy > p { margin: 28px 0 32px; max-width: 555px; font-size: 1rem; line-height: 1.48; }
+
+    /* Fotografias */
+
+    .portrait-composition {
+      position: relative;
+      padding: 0 15px 15px 0;
+      perspective: 1000px;
+    }
+
+    .portrait-slot {
+      width: 100%;
+      min-height: 580px;
+      height: 68svh;
+      max-height: 810px;
+      position: relative;
+      background: #272d23;
+      overflow: hidden;
+      clip-path: polygon(0 0, calc(100% - 42px) 0, 100% 42px, 100% 100%, 0 100%);
+      isolation: isolate;
+    }
+
+    .portrait-slot:after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      box-shadow: inset 0 0 90px #0004;
+      background: linear-gradient(0deg, #0e140c50, transparent 50%);
+      pointer-events: none;
+    }
+
+    .portrait-slot img {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center 30%;
+      z-index: 3;
+    }
+
+    .portrait-corner {
+      position: absolute;
+      inset: 21px 0 0 21px;
+      border-right: 1px solid #9a997352;
+      border-bottom: 1px solid #9a997352;
+      z-index: -1;
+    }
+
+    .scroll-cue {
+      position: absolute;
+      left: 50%;
+      bottom: 26px;
+      width: 35px;
+      height: 35px;
+      display: grid;
+      place-items: center;
+      color: #d3c4aa;
+    }
+
+    .scroll-cue .icon {
+      transform: rotate(90deg);
+      width: 20px;
+      animation: scroll-cue 2.6s ease-in-out infinite;
+    }
+
+    /* Contexto */
+
+    .problem { background: #141713; }
+    .problem > .shell > .section-heading { max-width: 745px; }
+    .text-panel { max-width: 790px; margin: auto; padding: 0 26px; }
+    .text-panel p { max-width: 720px; margin-left: auto; margin-right: auto; }
+    .text-panel p:first-child { color: #d6d9cc; font-size: 1.0625rem; }
+
+    .text-panel p:last-child {
+      margin-top: 30px;
+      background: #242b21;
+      padding: 26px 31px;
+      border-radius: 2px;
+      color: #d7d9cc;
+    }
+
+    /* Calculadora */
+
+    .acquisition { background: var(--paper); color: var(--ink); }
+    .acquisition p, .acquisition li { color: #626753; }
+    .acquisition h2 { max-width: 690px; margin: auto; }
+    .acquisition strong { color: var(--ink); }
+
+    .calculator {
+      max-width: 860px;
+      margin: auto;
+      background: #ddded1;
+      padding: 29px;
+      border-radius: 7px;
+      box-shadow: 0 20px 70px #363d2810;
+    }
+
+    .example-title { font-size: 1rem; text-align: center; margin-bottom: 27px; }
+    .calc-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; }
+    .calc-cell { background: #f1f1e7; border-radius: 3px; padding: 28px; min-width: 0; }
+    .calc-cell label { display: block; font-size: 1rem; line-height: 1.5; min-height: 55px; color: #404b32; }
+    .calc-cell strong { font-weight: 650; color: #263a1d; }
+
+    .calc-cell input {
+      display: block;
+      width: 100%;
+      height: 24px;
+      accent-color: #536541;
+      margin: 20px 0 0;
+      cursor: pointer;
+      appearance: none;
+      background: transparent;
+    }
+
+    .calc-cell input::-webkit-slider-runnable-track {
+      height: 3px;
+      background: #bfc5b0;
+      border-radius: 3px;
+    }
+
+    .calc-cell input::-webkit-slider-thumb {
+      appearance: none;
+      margin-top: -7px;
+      width: 17px;
+      height: 17px;
+      border-radius: 50%;
+      background: #4c6040;
+      box-shadow: 0 0 0 5px #4c604010;
+    }
+
+    .calc-cell input::-moz-range-track { height: 3px; background: #bfc5b0; }
+    .calc-cell input::-moz-range-thumb { width: 17px; height: 17px; border: 0; background: #4c6040; border-radius: 50%; }
+
+    .result-cell {
+      display: grid;
+      grid-template-columns: 26px 1fr;
+      gap: 15px;
+      align-items: start;
+      background: #293423;
+      box-shadow: inset 0 1px #a8b38c18;
+    }
+
+    .result-cell:last-child { background: #49573a; }
+    .result-cell .icon { color: #d4c3a4; width: 23px; height: 23px; margin-top: 2px; }
+    .result-cell p { font-size: .9375rem; line-height: 1.45; color: #d6decb; }
+
+    .result-cell strong {
+      display: block;
+      color: #f3ecd6;
+      font-weight: 450;
+      font-size: 1.8rem;
+      line-height: 1.18;
+      margin-top: 12px;
+      letter-spacing: -.05em;
+    }
+
+    .result-cell strong span { font-size: 1.24em; }
+    .calculator-ending { max-width: 730px; margin: 32px auto 0; text-align: center; }
+
+    .calculator-ending h3 {
+      font-family: Instrument, Georgia, serif;
+      font-style: italic;
+      font-size: 2.25rem;
+      margin: 16px auto 22px;
+      max-width: 660px;
+      line-height: 1.1;
+      letter-spacing: -.025em;
+    }
+
+    .calculator-ending p:last-child { font-size: 1rem; }
+
+    /* Carrossel */
+
+    .route { background: #172015; position: relative; overflow: hidden; }
+
+    .route:before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse at 50% 65%, #74805725, transparent 62%);
+      pointer-events: none;
+    }
+
+    .route .section-heading { position: relative; max-width: 710px; margin-bottom: 43px; }
+    .route h2 em { display: block; margin-top: 8px; }
+    .carousel { max-width: 1100px; margin: 0 auto; position: relative; padding: 0 45px; }
+
+    .slides {
+      position: relative;
+      height: 466px;
+      perspective: 1200px;
+      touch-action: pan-y;
+      user-select: none;
+      isolation: isolate;
+      outline-offset: 10px;
+    }
+
+    .slide {
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      width: 520px;
+      min-height: 450px;
+      padding: 29px;
+      border-radius: 22px;
+      display: flex;
+      flex-direction: column;
+      gap: 22px;
+      background: #d1d3bf;
+      color: #23341e;
+      box-shadow: 0 18px 45px #0003;
+      transform: translate(calc(-50% + var(--shift, 0px)), -50%) scale(var(--scale, 1));
+      opacity: var(--opacity, 0);
+      z-index: var(--layer, 0);
+      transition:
+        transform .6s cubic-bezier(.22, .68, .2, 1),
+        opacity .45s,
+        box-shadow .45s,
+        background .45s;
+      will-change: transform;
+      pointer-events: none;
+    }
+
+    .slide.is-active {
+      background: #26372b;
+      color: #f3eee1;
+      box-shadow: 0 28px 65px #0006;
+      pointer-events: auto;
+    }
+
+    .slide.is-neighbor { pointer-events: auto; }
+    .slide.is-neighbor .phase-copy p { visibility: hidden; }
+
+    .slide.is-neighbor .phase-art {
+      height: 220px;
+      position: absolute;
+      left: 29px;
+      right: 29px;
+      bottom: 29px;
+      width: auto;
+    }
+
+    .slide.is-neighbor .phase-art svg { height: 175px; width: 175px; }
+
+    .slide h3 {
+      font-size: 1.5rem;
+      line-height: 1.17;
+      letter-spacing: -.045em;
+      margin-bottom: 18px;
+      color: #293c24;
+    }
+
+    .slide p { font-size: .9375rem; line-height: 1.45; color: #51624a; }
+    .slide.is-active h3 { color: #eee8da; }
+    .slide.is-active p { color: #c8d1c0; }
+    .phase-copy { position: relative; z-index: 1; }
+
+    .phase-art {
+      height: 102px;
+      width: 100%;
+      margin-top: auto;
+      display: grid;
+      place-items: center;
+      overflow: hidden;
+      border-radius: 9px;
+      background: linear-gradient(120deg, #b5bda0, #e4e3cb 56%, #b4bf9d);
+      position: relative;
+      isolation: isolate;
+    }
+
+    .phase-art:before, .phase-art:after {
+      content: "";
+      position: absolute;
+      z-index: -1;
+      width: 190px;
+      height: 190px;
+      border: 35px solid #5f734b12;
+      border-radius: 45px;
+      transform: rotate(35deg);
+      left: -75px;
+      top: -70px;
+    }
+
+    .phase-art:after { left: auto; right: -50px; top: -10px; }
+    .phase-art svg { width: 105px; height: 105px; filter: drop-shadow(0 8px 9px #33492212); }
+    .slide.is-active .phase-art { background: linear-gradient(120deg, #a5b28d, #d8dcc2 56%, #8fa47a); }
+
+    .phase-select {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      border: 0;
+      border-radius: inherit;
+      background: transparent;
+      z-index: 2;
+      cursor: pointer;
+    }
+
+    .phase-select[hidden] { display: none; }
+    .phase-select:focus-visible { outline: 2px solid #d9bd9b; outline-offset: 5px; }
+    .carousel-controls { display: flex; justify-content: center; align-items: center; margin-top: 26px; height: 36px; }
+
+    .round-button {
+      position: absolute;
+      top: calc((100% - 62px) / 2);
+      transform: translateY(-50%);
+      width: 40px;
+      height: 40px;
+      border: 0;
+      border-radius: 50%;
+      background: #dfdfca;
+      color: #2e4027;
+      display: grid;
+      place-items: center;
+      z-index: 6;
+      box-shadow: 0 5px 22px #0003;
+      transition: background .25s, scale .25s;
+    }
+
+    .round-button:hover { background: #f3eddc; scale: 1.06; }
+    .round-button .icon { width: 19px; height: 19px; }
+    #prev { left: 0; }
+    #next { right: 0; }
+    #prev .icon { transform: rotate(180deg); }
+
+    .carousel-dots { display: flex; gap: 0; align-items: center; }
+
+    .carousel-dots button {
+      border: 0;
+      width: 30px;
+      height: 36px;
+      background: transparent;
+      padding: 0;
+      display: grid;
+      place-items: center;
+    }
+
+    .carousel-dots button:before {
+      content: "";
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: #697b54;
+      transition: width .25s, background .25s;
+    }
+
+    .carousel-dots button[aria-current=true]:before {
+      width: 22px;
+      border-radius: 5px;
+      background: #d8bea0;
+    }
+
+    /* Execução */
+
+    .working { background: #121612; padding-bottom: 115px; }
+    .work-pair { max-width: 860px; display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin: auto; }
+    .work-card { background: #20291c; padding: 33px; border-radius: 4px; border-top: 2px solid #9aab7c; }
+    .work-card:nth-child(2) { background: #272a22; border-color: #bca486; }
+    .work-card h3 { color: #e0c7a6; font-size: 1.5rem; margin-bottom: 18px; }
+    .work-card p { font-size: .9375rem; line-height: 1.48; }
+    .deliver-panel { max-width: 810px; margin: 45px auto 0; padding: 0 15px; }
+
+    .deliver-panel h3 {
+      font-family: Instrument, Georgia, serif;
+      font-style: italic;
+      font-size: 2.15rem;
+      line-height: 1.13;
+      text-align: center;
+      max-width: 620px;
+      margin: 0 auto 32px;
+      letter-spacing: -.025em;
+      color: #d2bda0;
+    }
+
+    .deliver-panel ul, .fit-card ul { margin: 0; padding: 0; list-style: none; }
+
+    .deliver-panel li, .fit-card li {
+      position: relative;
+      padding-left: 28px;
+      margin-top: 18px;
+      font-size: 1rem;
+      line-height: 1.44;
+    }
+
+    .deliver-panel li:first-child, .fit-card li:first-child { margin-top: 0; }
+
+    .deliver-panel li:before, .fit-card li:before {
+      content: "";
+      position: absolute;
+      width: 10px;
+      height: 6px;
+      border-left: 1px solid #b2c29b;
+      border-bottom: 1px solid #b2c29b;
+      left: 1px;
+      top: 7px;
+      transform: rotate(-45deg);
+    }
+
+    .fit-block { max-width: 860px; margin: 100px auto 0; }
+
+    .fit-card {
+      background: #ced2b7;
+      padding: 42px 47px;
+      border-radius: 5px;
+      color: #273820;
+      box-shadow: 0 16px 40px #0002;
+    }
+
+    .fit-card h2 { text-align: center; font-size: 2.35rem; margin-bottom: 32px; }
+    .fit-card li { color: #44533a; }
+    .fit-card li:before { border-color: #5c7248; }
+
+    .fit-no {
+      margin-top: 20px;
+      background: #22281e;
+      box-shadow: none;
+      color: #dedbc8;
+      padding: 34px 47px;
+    }
+
+    .fit-no h2 { font-family: Instrument, Georgia, serif; font-style: italic; font-size: 2.35rem; }
+    .fit-no li { color: #aeb9a0; }
+    .fit-no li:before { width: 8px; height: 1px; background: #8b9d76; transform: none; top: 11px; border: 0; }
+    .fit-note { max-width: 740px; margin: 32px auto 0; font-size: .9375rem; line-height: 1.48; }
+
+    /* Sobre */
+
+    .about { background: #252d20; }
+    .about-grid { display: grid; grid-template-columns: .83fr 1.17fr; gap: 66px; align-items: center; }
+    .about .portrait-slot { height: 680px; min-height: 680px; max-height: none; background: #323c2a; }
+    .about-copy h2 { margin-bottom: 29px; max-width: 510px; }
+    .about-copy h2 em { white-space: nowrap; }
+    .about-copy p { font-size: .9375rem; line-height: 1.5; color: #c3cab7; }
+    .about-copy p + p { margin-top: 21px; }
+
+    /* Encerramento */
+
+    .closing { background: #121612; padding-bottom: 44px; position: relative; }
+    .closing .section-heading { max-width: 780px; }
+    .closing .section-heading h2 { max-width: 730px; margin: 0 auto 28px; }
+    .closing .section-heading p { max-width: 710px; }
+    .faq { max-width: 790px; margin: 52px auto 0; display: grid; gap: 0; }
+
+    .faq details {
+      border-top: 1px solid #525c414d;
+      padding: 0 20px;
+      background: transparent;
+      transition: background .25s;
+    }
+
+    .faq details:last-child { border-bottom: 1px solid #525c414d; }
+    .faq details[open] { background: #20291b; }
+
+    .faq summary {
+      list-style: none;
+      cursor: pointer;
+      padding: 25px 0;
+      display: grid;
+      grid-template-columns: 1fr 22px;
+      gap: 20px;
+      align-items: center;
+      text-align: center;
+      line-height: 1.4;
+      font-size: .9375rem;
+    }
+
+    .faq summary::-webkit-details-marker { display: none; }
+    .faq summary strong { font-weight: 500; }
+    .faq summary .icon { width: 19px; height: 19px; color: #d4bc9d; transition: transform .25s; }
+    .faq details[open] summary .icon { transform: rotate(45deg); }
+    .faq details p { text-align: center; padding: 0 14px 26px; font-size: .9375rem; }
+    .closing-cta { max-width: 700px; margin: 39px auto 0; text-align: center; }
+    .closing-cta > p { margin-top: 25px; font-size: .9375rem; }
+    .closing footer { display: flex; justify-content: center; margin-top: 88px; }
+    .closing footer .wordmark { font-size: 3.5rem; opacity: .72; }
+
+    .motion .reveal {
+      opacity: 0;
+      transform: translateY(22px);
+      transition: opacity .8s ease, transform .8s cubic-bezier(.2, .7, .2, 1);
+    }
+
+    .motion .reveal.is-visible { opacity: 1; transform: none; }
+
+    @keyframes scroll-cue {
+      0%, 100% { translate: 0 -3px; opacity: .4; }
+      50% { translate: 0 3px; opacity: 1; }
+    }
+
+    /* Responsividade */
+
+    @media (min-width: 1600px) {
+      .shell { width: min(calc(100% - 220px), var(--max)); }
+      .hero-grid { gap: 75px; }
+      .hero h1 { font-size: 3.25rem; }
+    }
+
+    @media (max-width: 1100px) {
+      .shell { width: calc(100% - 96px); }
+      .hero-grid { gap: 40px; grid-template-columns: 1.16fr .84fr; }
+      .hero h1 { font-size: 2.7rem; }
+      .hero-copy > p { font-size: .9375rem; }
+      .portrait-slot { height: 68svh; min-height: 540px; }
+      .about-grid { gap: 40px; }
+      .about .portrait-slot { height: 740px; min-height: 740px; }
+      .carousel { padding: 0 35px; }
+      .slide { width: 500px; }
+      .round-button { width: 37px; height: 37px; }
+    }
+
+    @media (max-width: 780px) {
+      .shell { width: calc(100% - 56px); }
+      .section { padding: 78px 0; }
+      .header { height: 83px; }
+      .hero { padding: 0; min-height: 96svh; }
+      .hero-grid { grid-template-columns: 1fr; gap: 44px; padding: 118px 0 91px; }
+      .hero-copy { max-width: 650px; margin: auto; }
+      .hero h1 { font-size: clamp(2.25rem, 5.5vw, 2.9rem); }
+      .hero-copy > p { font-size: 1rem; }
+      .hero .portrait-composition { width: min(100%, 490px); margin: auto; }
+      .hero .portrait-slot { height: 550px; min-height: 0; }
+      .scroll-cue { bottom: 25px; }
+      .section-heading { margin-bottom: 33px; }
+      .text-panel { padding: 0 14px; }
+      .calc-grid { gap: 12px; }
+      .calculator { padding: 23px; }
+      .calc-cell { padding: 24px; }
+      .result-cell strong { font-size: 1.5rem; }
+      .work-pair { grid-template-columns: 1fr; }
+      .work-card { padding: 30px; }
+      .work-card p { font-size: 1rem; }
+      .deliver-panel { padding: 0 9px; }
+      .fit-block { margin-top: 75px; }
+      .fit-card { padding: 35px; }
+      .fit-card h2 { font-size: 2rem; }
+      .about-grid { grid-template-columns: 1fr; gap: 43px; }
+      .about .portrait-composition { width: min(100%, 490px); margin: auto; }
+      .about .portrait-slot { height: 550px; min-height: 0; }
+      .about-copy { max-width: 640px; margin: auto; }
+      .about-copy h2 { text-align: center; max-width: none; }
+      .about-copy p { font-size: 1rem; }
+      .closing { padding-bottom: 38px; }
+      .route .shell { width: calc(100% - 48px); }
+      .carousel { padding: 0 26px; }
+      .slide { width: min(470px, 78vw); padding: 27px; min-height: 465px; border-radius: 18px; }
+      .slide h3 { font-size: 1.4rem; }
+      .slide p { font-size: .9375rem; }
+      .phase-art { height: 100px; }
+      .round-button { width: 35px; height: 35px; }
+      .route .section-heading { margin-bottom: 35px; }
+    }
+
+    @media (max-width: 480px) {
+      .shell { width: calc(100% - 44px); }
+      .section { padding: 64px 0; }
+      .header { height: 79px; }
+      .wordmark { font-size: 1.85rem; }
+      .hero { padding: 0; }
+      .hero-grid { padding: 112px 0 79px; gap: 40px; }
+      .hero h1 { font-size: 2.06rem; line-height: 1.14; letter-spacing: -.053em; }
+      .hero h1 em { font-size: 1.16em; }
+      .hero-copy > p { font-size: .9375rem; line-height: 1.49; margin: 24px 0 29px; }
+      .button { font-size: .8125rem; gap: 24px; padding-left: 19px; min-height: 55px; max-width: 100%; }
+      .button > span { width: 32px; height: 34px; }
+      .hero .portrait-slot { height: 400px; }
+      .portrait-composition { padding: 0 11px 11px 0; }
+      .portrait-corner { inset: 14px 0 0 14px; }
+      .portrait-slot { clip-path: polygon(0 0, calc(100% - 30px) 0, 100% 30px, 100% 100%, 0 100%); }
+      .scroll-cue { bottom: 19px; }
+      .section-heading { margin-bottom: 29px; }
+      .section-heading h2 { font-size: 1.95rem; line-height: 1.15; letter-spacing: -.045em; }
+      .section-heading h2 + p { margin-top: 21px; }
+      .section-heading p { font-size: .9375rem; }
+      .text-panel { padding: 0 2px; }
+      .text-panel p { font-size: .9375rem; line-height: 1.5; }
+      .text-panel p:first-child { font-size: 1rem; }
+      .text-panel p:last-child { padding: 24px 19px; }
+      .calculator { padding: 16px; }
+      .example-title { font-size: .9375rem; margin-bottom: 20px; }
+      .calc-grid { grid-template-columns: 1fr; gap: 12px; }
+      .calc-cell { padding: 23px; }
+      .calc-cell label { min-height: 0; font-size: .9375rem; }
+      .calc-cell input { margin-top: 14px; }
+      .result-cell strong { font-size: 1.5rem; }
+      .calculator-ending { margin-top: 29px; }
+      .calculator-ending h3 { font-size: 1.85rem; }
+      .calculator-ending p, .calculator-ending p:last-child { font-size: .9375rem; }
+      .work-card { padding: 27px; }
+      .work-card h3 { font-size: 1.4rem; }
+      .work-card p { font-size: .9375rem; }
+      .deliver-panel h3 { font-size: 1.9rem; }
+      .deliver-panel li, .fit-card li { padding-left: 25px; margin-top: 19px; font-size: .9375rem; }
+      .fit-card { padding: 30px 25px; }
+      .fit-card h2 { font-size: 1.8rem; margin-bottom: 28px; }
+      .fit-no h2 { font-size: 2.1rem; }
+      .fit-note { margin-top: 29px; font-size: .9375rem; }
+      .about .portrait-slot { height: 420px; }
+      .about-copy h2 { font-size: 1.95rem; }
+      .about-copy p { font-size: .9375rem; line-height: 1.5; }
+      .faq { margin-top: 42px; }
+      .faq details { padding: 0 13px; }
+      .faq summary { grid-template-columns: 1fr 20px; gap: 15px; font-size: .9375rem; padding: 24px 0; }
+      .faq details p { font-size: .9375rem; line-height: 1.48; padding: 0 4px 24px; }
+      .closing-cta { margin-top: 34px; }
+      .closing footer { margin-top: 64px; }
+      .closing { padding-bottom: 34px; }
+      .route .shell { width: calc(100% - 28px); }
+      .route .section-heading { padding: 0 8px; }
+      .carousel { padding: 0 13px; }
+      .slides { height: 575px; }
+      .slide { width: calc(100vw - 88px); padding: 23px 21px; gap: 20px; min-height: 505px; border-radius: 17px; }
+      .slide h3 { font-size: 1.25rem; line-height: 1.2; margin-bottom: 17px; }
+      .slide p { font-size: .875rem; line-height: 1.47; }
+      .phase-art { height: 88px; border-radius: 7px; }
+      .slide.is-neighbor .phase-art { left: 21px; right: 21px; bottom: 23px; height: 235px; }
+      .phase-art svg { width: 90px; height: 90px; }
+      .round-button { width: 31px; height: 31px; }
+      .round-button .icon { width: 17px; height: 17px; }
+      #prev { left: -3px; }
+      #next { right: -3px; }
+      .carousel-controls { margin-top: 21px; }
+      .carousel-dots button { width: 28px; }
+    }
+
+    /* Três movimentos */
+
+    .attempts { max-width: 690px; margin: 59px auto 0; }
+    .movement-heading { max-width: 480px; margin: 0 auto 22px; text-align: center; }
+
+    .movement-heading h2 {
+      font-size: 1.4rem;
+      line-height: 1.28;
+      letter-spacing: -.035em;
+      font-weight: 450;
+      color: #bfc5b4;
+    }
+
+    .movement-choices {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 12px;
+    }
+
+    .movement-trigger {
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 13px;
+      padding: 28px 15px;
+      min-height: 96px;
+      background: linear-gradient(130deg, #2a322351, #1b231a80);
+      border: 1px solid #aab58a25;
+      border-radius: 12px;
+      color: #e0e0ce;
+      font-size: 1rem;
+      letter-spacing: -.02em;
+      transition: transform .35s, background .35s, border-color .35s, box-shadow .35s;
+      overflow: hidden;
+      isolation: isolate;
+    }
+
+    .movement-trigger:before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      z-index: -1;
+      background: radial-gradient(ellipse at 30% 0, #bcc49a1c, transparent 70%);
+      opacity: 0;
+      transition: opacity .35s;
+    }
+
+    .movement-trigger:hover,
+    .movement-trigger:focus-visible {
+      transform: translateY(-4px);
+      border-color: #c7c29975;
+      box-shadow: 0 12px 25px #0002;
+      background: #2e3725;
+    }
+
+    .movement-trigger:hover:before,
+    .movement-trigger:focus-visible:before { opacity: 1; }
+
+    .movement-icon {
+      width: 24px;
+      height: 24px;
+      color: #b6bf9e;
+      transition: transform .35s, color .35s;
+    }
+
+    .movement-trigger:hover .movement-icon {
+      transform: rotate(-7deg);
+      color: #e0c5a6;
+    }
+
+    .movement-arrow {
+      position: absolute;
+      right: 12px;
+      top: 11px;
+      width: 12px;
+      height: 12px;
+      color: #a4af90;
+      opacity: .6;
+      transition: opacity .3s, transform .3s;
+    }
+
+    .movement-trigger:hover .movement-arrow {
+      opacity: 1;
+      transform: translate(2px, -2px);
+    }
+
+    /* Janela de leitura */
+
+    #movement-dialog {
+      color-scheme: light;
+      position: fixed;
+      inset: 0;
+      width: min(610px, calc(100% - 40px));
+      max-width: none;
+      max-height: calc(100svh - 48px);
+      margin: auto;
+      padding: 0;
+      border: 1px solid #fff7;
+      border-radius: 18px;
+      background: #e5e6d7;
+      color: #273222;
+      box-shadow: 0 45px 160px #0009;
+      overflow: auto;
+    }
+
+    #movement-dialog::backdrop {
+      background: #080e0bce;
+      backdrop-filter: blur(8px);
+    }
+
+    #movement-dialog[open] {
+      animation: movement-appear .35s cubic-bezier(.2, .75, .25, 1) both;
+    }
+
+    #movement-dialog[open]::backdrop {
+      animation: movement-backdrop .3s both;
+    }
+
+    .movement-dialog-top {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 14px;
+      padding: 22px 23px 0;
+    }
+
+    .movement-tabs {
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      padding: 4px;
+      border-radius: 30px;
+      background: #68704c12;
+    }
+
+    .movement-tabs button {
+      border: 0;
+      padding: 9px 15px;
+      border-radius: 25px;
+      background: transparent;
+      font: inherit;
+      font-size: .875rem;
+      color: #63704f;
+      transition: background .25s, color .25s, box-shadow .25s;
+    }
+
+    .movement-tabs button[aria-selected=true] {
+      background: #f5f4e9;
+      color: #2d3b22;
+      box-shadow: 0 2px 8px #2b38200a;
+    }
+
+    .movement-close {
+      flex-shrink: 0;
+      width: 35px;
+      height: 35px;
+      border: 0;
+      border-radius: 50%;
+      display: grid;
+      place-items: center;
+      background: #66714712;
+      color: #455237;
+      transition: background .25s;
+    }
+
+    .movement-close:hover { background: #66714725; }
+    .movement-close .icon { width: 21px; height: 21px; transform: rotate(45deg); }
+
+    #movement-dialog button:focus-visible,
+    #movement-dialog article:focus-visible {
+      outline: 2px solid #596d3e;
+      outline-offset: 3px;
+    }
+
+    .movement-reading { padding: 32px 37px 26px; }
+
+    .movement-reading h3 {
+      font-size: 1.85rem;
+      line-height: 1.14;
+      letter-spacing: -.04em;
+      color: #283921;
+      margin-bottom: 18px;
+      max-width: 450px;
+    }
+
+    .movement-reading p { font-size: 1rem; line-height: 1.55; color: #4f5c43; }
+    .movement-reading article[hidden] { display: none; }
+
+    .movement-conclusion {
+      margin: 0 !important;
+      padding: 24px 37px 29px;
+      background: #cbd0b66b;
+      font-family: Instrument, Georgia, serif;
+      font-style: italic;
+      font-size: 1.28rem;
+      line-height: 1.3;
+      color: #586345;
+    }
+
+    @keyframes movement-appear {
+      from { opacity: 0; transform: translateY(12px) scale(.97); }
+      to { opacity: 1; transform: none; }
+    }
+
+    @keyframes movement-backdrop {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    @media (max-width: 480px) {
+      .attempts { margin-top: 43px; }
+      .movement-heading { max-width: 300px; margin-bottom: 19px; }
+      .movement-heading h2 { font-size: 1.15rem; line-height: 1.3; }
+      .movement-choices { gap: 8px; }
+
+      .movement-trigger {
+        flex-direction: column;
+        min-height: 100px;
+        padding: 22px 7px 17px;
+        gap: 12px;
+        font-size: .875rem;
+        border-radius: 11px;
+      }
+
+      .movement-icon { width: 23px; height: 23px; }
+      .movement-arrow { right: 8px; top: 8px; width: 11px; height: 11px; }
+
+      #movement-dialog {
+        width: calc(100% - 28px);
+        max-height: calc(100svh - 32px);
+        border-radius: 15px;
+      }
+
+      .movement-dialog-top { padding: 16px 14px 0; gap: 8px; }
+      .movement-tabs { gap: 0; padding: 3px; }
+      .movement-tabs button { padding: 9px 10px; font-size: .8125rem; }
+      .movement-close { width: 32px; height: 32px; }
+      .movement-reading { padding: 26px 24px 25px; }
+      .movement-reading h3 { font-size: 1.65rem; }
+      .movement-reading p { font-size: 1rem; line-height: 1.5; }
+      .movement-conclusion { padding: 22px 24px 26px; font-size: 1.2rem; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      *, *:before, *:after { animation: none !important; transition: none !important; }
+      .motion .reveal { opacity: 1; transform: none; }
+      .movement-trigger:hover { transform: none; }
+    }
+  </style>
 </head>
 
 <body>
 
-<svg class="icon-defs" aria-hidden="true" xmlns="http://www.w3.org/2000/svg">
-  <symbol id="arrow" viewBox="0 0 24 24">
-    <path d="M5 12h14M13 6l6 6-6 6"/>
-  </symbol>
-  <symbol id="up-right" viewBox="0 0 24 24">
-    <path d="M6 18 18 6M6 6h12v12"/>
-  </symbol>
-  <symbol id="target" viewBox="0 0 24 24">
-    <circle cx="12" cy="12" r="8.5"/>
-    <circle cx="12" cy="12" r="4"/>
-    <path d="M12 2v3m0 14v3M2 12h3m14 0h3"/>
-  </symbol>
-  <symbol id="layers" viewBox="0 0 24 24">
-    <path d="m3 7 9-4 9 4-9 4zm0 5 9 4 9-4M3 17l9 4 9-4"/>
-  </symbol>
-  <symbol id="people" viewBox="0 0 24 24">
-    <circle cx="9" cy="8" r="3"/>
-    <path d="M3 21v-3a6 6 0 0 1 12 0v3M17 5a3 3 0 0 1 0 6m1 4a5 5 0 0 1 3 5"/>
-  </symbol>
-  <symbol id="chart" viewBox="0 0 24 24">
-    <path d="M4 3v17h17M8 15l4-5 4 2 5-7"/>
-  </symbol>
-  <symbol id="plus" viewBox="0 0 24 24">
-    <path d="M5 12h14M12 5v14"/>
-  </symbol>
-</svg>
+  <svg class="icon-defs" aria-hidden="true" xmlns="http://www.w3.org/2000/svg">
+    <symbol id="arrow" viewBox="0 0 24 24">
+      <path d="M5 12h14M13 6l6 6-6 6"/>
+    </symbol>
+    <symbol id="up-right" viewBox="0 0 24 24">
+      <path d="M6 18 18 6M6 6h12v12"/>
+    </symbol>
+    <symbol id="target" viewBox="0 0 24 24">
+      <circle cx="12" cy="12" r="8.5"/>
+      <circle cx="12" cy="12" r="4"/>
+      <path d="M12 2v3m0 14v3M2 12h3m14 0h3"/>
+    </symbol>
+    <symbol id="layers" viewBox="0 0 24 24">
+      <path d="m3 7 9-4 9 4-9 4zm0 5 9 4 9-4M3 17l9 4 9-4"/>
+    </symbol>
+    <symbol id="people" viewBox="0 0 24 24">
+      <circle cx="9" cy="8" r="3"/>
+      <path d="M3 21v-3a6 6 0 0 1 12 0v3M17 5a3 3 0 0 1 0 6m1 4a5 5 0 0 1 3 5"/>
+    </symbol>
+    <symbol id="chart" viewBox="0 0 24 24">
+      <path d="M4 3v17h17M8 15l4-5 4 2 5-7"/>
+    </symbol>
+    <symbol id="check" viewBox="0 0 24 24">
+      <path d="m5 12 4 4L19 6"/>
+    </symbol>
+    <symbol id="plus" viewBox="0 0 24 24">
+      <path d="M5 12h14M12 5v14"/>
+    </symbol>
+  </svg>
 
-<header class="header">
-  <div class="shell header-inner">
-    <a class="wordmark" href="#inicio" aria-label="Rota 90, início">rota<span>90</span></a>
-  </div>
-</header>
-
-<main>
-
-  <!-- PRIMEIRA SEÇÃO -->
-  <section class="hero section" id="inicio">
-    <div class="hero-atmosphere" aria-hidden="true"></div>
-
-    <div class="shell hero-grid">
-      <div class="hero-copy">
-        <h1>Em 90 dias, sua empresa passa a ter <em>um sistema organizado</em> para gerar oportunidades e fechar contratos</h1>
-
-        <p>A Rota 90 entra em empresas que já faturam acima de R$100 mil por mês, vendem com ticket alto e conduzem a parte comercial no improviso. Eu organizo o caminho inteiro, da geração da oportunidade até o contrato assinado.</p>
-
-        <a class="button" href="#diagnostico">
-          Quero agendar o diagnóstico
-          <span>
-            <svg class="icon" aria-hidden="true"><use href="#up-right"/></svg>
-          </span>
-        </a>
-      </div>
-
-      <div class="portrait-composition">
-        <div class="portrait-slot">
-          <img
-            src="fotoAbertura.jpg"
-            alt="Ian Henrique"
-            loading="eager"
-            fetchpriority="high"
-            decoding="async"
-          >
-        </div>
-        <span class="portrait-corner" aria-hidden="true"></span>
-      </div>
+  <header class="header">
+    <div class="shell header-inner">
+      <a class="wordmark" href="#inicio" aria-label="Rota 90, início">rota<span>90</span></a>
     </div>
+  </header>
 
-    <a class="scroll-cue" href="#sistema" aria-label="Continuar pela página">
-      <svg class="icon" aria-hidden="true"><use href="#arrow"/></svg>
-    </a>
-  </section>
+  <main>
 
-  <!-- CONTEXTO -->
-  <section class="section problem" id="sistema">
-    <div class="shell">
-      <div class="section-heading reveal">
-        <h2>Sua empresa cresceu mais rápido que o <em>seu processo comercial</em></h2>
+    <!-- ABERTURA -->
+
+    <section class="hero section" id="inicio">
+      <div class="hero-atmosphere" aria-hidden="true"></div>
+
+      <div class="shell hero-grid">
+        <div class="hero-copy">
+          <h1>Em 90 dias, sua empresa passa a ter <em>um sistema organizado</em> para gerar oportunidades e fechar contratos</h1>
+
+          <p>A Rota 90 entra em empresas que já faturam acima de R$100 mil por mês, vendem com ticket alto e conduzem a parte comercial no improviso. Eu organizo o caminho inteiro, da geração da oportunidade até o contrato assinado.</p>
+
+          <a class="button" href="#diagnostico">
+            Quero agendar o diagnóstico
+            <span>
+              <svg class="icon" aria-hidden="true"><use href="#up-right"/></svg>
+            </span>
+          </a>
+        </div>
+
+        <div class="portrait-composition">
+          <div class="portrait-slot">
+            <img
+              src="fotoAbertura.jpg"
+              alt="Ian Henrique"
+              loading="eager"
+              decoding="async"
+              fetchpriority="high"
+            >
+          </div>
+          <span class="portrait-corner" aria-hidden="true"></span>
+        </div>
       </div>
 
-      <div class="text-panel centered reveal">
-        <p>Faturar acima de R$100 mil por mês prova duas coisas: que o serviço é bom e que existem pessoas comprando. A parte comercial, na maioria dessas empresas, continua funcionando do mesmo jeito que funcionava quando o faturamento era um terço disso.</p>
+      <a class="scroll-cue" href="#sistema" aria-label="Continuar pela página">
+        <svg class="icon" aria-hidden="true"><use href="#arrow"/></svg>
+      </a>
+    </section>
 
-        <p>O lead chega pelo Instagram, pelo WhatsApp da recepção, por indicação e pelo celular do dono, e ninguém consegue dizer quantos foram no mês passado. A proposta sai e some. Duas pessoas atendem o mesmo tipo de cliente de formas diferentes. Quando a meta bate, fica a dúvida sobre o que funcionou, e quando a meta falha, fica a mesma dúvida.</p>
+    <!-- CONTEXTO -->
 
-        <p>O efeito prático é que o mês seguinte vira aposta. Você tem faturamento, mas tem pouca previsão, e quase toda decisão de crescimento passa pela sua cabeça antes de acontecer.</p>
-
-        <p>Faça o teste. Quantas oportunidades qualificadas entraram na sua empresa no mês passado, e quantas viraram contrato? Se a resposta exige alguém abrir o WhatsApp e contar, o gargalo está no processo, e nenhum investimento em marketing resolve isso.</p>
-      </div>
-
-      <div class="attempts">
+    <section class="section problem" id="sistema">
+      <div class="shell">
         <div class="section-heading reveal">
-          <h2>Três movimentos que quase toda empresa fez antes de chegar aqui</h2>
+          <h2>Sua empresa cresceu mais rápido que o <em>seu processo comercial</em></h2>
         </div>
 
-        <div class="attempt-stack">
-          <article class="attempt-card reveal">
-            <span class="attempt-icon">
-              <svg class="icon" aria-hidden="true"><use href="#layers"/></svg>
-            </span>
-            <div>
-              <h3>Contratou uma agência.</h3>
-              <p>O material melhorou, o feed ficou organizado e o relatório mostra alcance. A quantidade de reuniões comerciais seguiu igual, porque alcance e pedido de orçamento são coisas diferentes, e ninguém foi contratado para entregar a segunda.</p>
-            </div>
-          </article>
+        <div class="text-panel centered reveal">
+          <p>Faturar acima de R$100 mil por mês prova duas coisas: que o serviço é bom e que existem pessoas comprando. A parte comercial, na maioria dessas empresas, continua funcionando do mesmo jeito que funcionava quando o faturamento era um terço disso.</p>
 
-          <article class="attempt-card reveal">
-            <span class="attempt-icon">
+          <p>O lead chega pelo Instagram, pelo WhatsApp da recepção, por indicação e pelo celular do dono, e ninguém consegue dizer quantos foram no mês passado. A proposta sai e some. Duas pessoas atendem o mesmo tipo de cliente de formas diferentes. Quando a meta bate, fica a dúvida sobre o que funcionou, e quando a meta falha, fica a mesma dúvida.</p>
+
+          <p>O efeito prático é que o mês seguinte vira aposta. Você tem faturamento, mas tem pouca previsão, e quase toda decisão de crescimento passa pela sua cabeça antes de acontecer.</p>
+
+          <p>Faça o teste. Quantas oportunidades qualificadas entraram na sua empresa no mês passado, e quantas viraram contrato? Se a resposta exige alguém abrir o WhatsApp e contar, o gargalo está no processo, e nenhum investimento em marketing resolve isso.</p>
+        </div>
+
+        <div class="attempts" id="movimentos">
+          <div class="movement-heading">
+            <h2>Três movimentos que quase toda empresa fez antes de chegar aqui</h2>
+          </div>
+
+          <div class="movement-choices">
+            <button
+              class="movement-trigger"
+              type="button"
+              data-movement="0"
+              aria-haspopup="dialog"
+              aria-controls="movement-dialog"
+            >
+              <svg class="movement-icon icon" aria-hidden="true"><use href="#layers"/></svg>
+              <span>Agência</span>
+              <svg class="movement-arrow icon" aria-hidden="true"><use href="#up-right"/></svg>
+            </button>
+
+            <button
+              class="movement-trigger"
+              type="button"
+              data-movement="1"
+              aria-haspopup="dialog"
+              aria-controls="movement-dialog"
+            >
+              <svg class="movement-icon icon" aria-hidden="true"><use href="#people"/></svg>
+              <span>Vendedor</span>
+              <svg class="movement-arrow icon" aria-hidden="true"><use href="#up-right"/></svg>
+            </button>
+
+            <button
+              class="movement-trigger"
+              type="button"
+              data-movement="2"
+              aria-haspopup="dialog"
+              aria-controls="movement-dialog"
+            >
+              <svg class="movement-icon icon" aria-hidden="true"><use href="#chart"/></svg>
+              <span>Anúncios</span>
+              <svg class="movement-arrow icon" aria-hidden="true"><use href="#up-right"/></svg>
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CALCULADORA -->
+
+    <section class="section acquisition" id="conta">
+      <div class="shell">
+        <div class="section-heading reveal">
+          <h2>Primeiro os números, depois o canal de aquisição</h2>
+          <p>A Rota 90 inverte a ordem. Antes de decidir onde investir, a gente calcula quanto sua empresa precisa gerar.</p>
+        </div>
+
+        <div class="calculator reveal">
+          <p class="example-title"><strong>Um exemplo de como essa conta fica:</strong></p>
+
+          <div class="calc-grid">
+            <div class="calc-cell">
+              <label for="goal">Meta de <strong id="goal-value">R$60 mil</strong> em vendas novas.</label>
+              <input
+                type="range"
+                id="goal"
+                min="15000"
+                max="300000"
+                step="5000"
+                value="60000"
+                aria-label="Meta de vendas novas em reais"
+              >
+            </div>
+
+            <div class="calc-cell">
+              <label for="ticket">Ticket médio de <strong id="ticket-value">R$15 mil</strong>, então são <strong><span id="contracts">4</span> <span id="contract-noun">contratos</span></strong>.</label>
+              <input
+                type="range"
+                id="ticket"
+                min="3000"
+                max="50000"
+                step="1000"
+                value="15000"
+                aria-label="Ticket médio em reais"
+              >
+            </div>
+
+            <div class="calc-cell result-cell">
               <svg class="icon" aria-hidden="true"><use href="#people"/></svg>
-            </span>
-            <div>
-              <h3>Contratou vendedor.</h3>
-              <p>A pessoa entrou sem processo definido, sem lista, sem meta diária de contato e sem critério de qualificação. Vendedor bom dentro de estrutura ruim produz o mesmo resultado que o dono produzia, só que com folha maior.</p>
+              <p>Sua empresa fecha um a cada quatro reuniões, então são <strong><span id="meetings">16</span> reuniões.</strong></p>
             </div>
+
+            <div class="calc-cell result-cell">
+              <svg class="icon" aria-hidden="true"><use href="#target"/></svg>
+              <p>Metade das oportunidades vira reunião, então são <strong><span id="opportunities">32</span> oportunidades qualificadas.</strong></p>
+            </div>
+          </div>
+        </div>
+
+        <div class="calculator-ending reveal">
+          <p>Daí em diante o projeto inteiro responde uma pergunta só.</p>
+          <h3 id="acquisition-question">Como gerar 32 oportunidades qualificadas por mês nessa empresa?</h3>
+          <p>A resposta muda conforme o mercado, o ticket e o lugar onde seu cliente está, mas a pergunta permanece a mesma o tempo todo. É isso que transforma a maneira como a empresa se posiciona no mercado, para atrair as pessoas certas.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ROTA 90 -->
+
+    <section class="section route" id="rota">
+      <div class="shell">
+        <div class="section-heading reveal">
+          <h2>Rota 90, <em>Sistema de Aquisição e Crescimento</em></h2>
+          <p>Noventa dias organizando, dentro da sua empresa, a estrutura que gera oportunidades, qualifica, fecha e registra de onde veio cada contrato.</p>
+        </div>
+
+        <div class="carousel" role="region" aria-roledescription="carrossel" aria-label="Etapas da Rota 90">
+          <div class="slides" id="slides" tabindex="0" aria-live="polite">
+
+            <article class="slide is-active" id="phase-1" role="group" aria-roledescription="slide" aria-label="1 de 5">
+              <div class="phase-copy">
+                <h3>Dias 1 a 10, diagnóstico e números.</h3>
+                <p>Eu entro nos seus dados dos últimos seis a doze meses, converso com algumas pessoas da sua empresa e reconstruo o caminho que seus clientes atuais percorreram até assinar. Desse levantamento sai quanto entra de oportunidade hoje, onde elas se perdem e quantas você precisa gerar por mês para bater a meta. Na mesma semana, alguém do seu time vai olhar as propostas paradas e os orçamentos sem resposta, porque costuma haver oportunidade de novos contratos aí.</p>
+              </div>
+
+              <div class="phase-art" aria-hidden="true">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 180 190" fill="none">
+                  <defs>
+                    <linearGradient id="sheet-1" x1="35" y1="35" x2="140" y2="155" gradientUnits="userSpaceOnUse">
+                      <stop stop-color="#f5f2df"/>
+                      <stop offset="1" stop-color="#b8c2a2"/>
+                    </linearGradient>
+                  </defs>
+                  <ellipse cx="91" cy="171" rx="63" ry="7" fill="#354b24" opacity=".07"/>
+                  <g stroke-linecap="round" stroke-linejoin="round">
+                    <rect x="32" y="35" width="75" height="90" rx="8" fill="url(#sheet-1)"/>
+                    <path d="M48 94V78m16 16V64m16 30V54" stroke="#8a9872" stroke-width="7"/>
+                    <circle cx="105" cy="110" r="27" fill="#d6dcc5" stroke="#4c603b" stroke-width="9"/>
+                    <path d="m124 130 18 20" stroke="#4c603b" stroke-width="12"/>
+                  </g>
+                </svg>
+              </div>
+
+              <button class="phase-select" data-card="0" type="button" aria-label="Ver etapa 1" hidden></button>
+            </article>
+
+            <article class="slide" id="phase-2" role="group" aria-roledescription="slide" aria-label="2 de 5">
+              <div class="phase-copy">
+                <h3>Dias 11 a 25, oferta e proposta comercial.</h3>
+                <p>Reviso o que sua empresa vende e como isso chega ao cliente. Escopo, ticket, argumentos, estrutura da proposta e as objeções que mais aparecem nas reuniões. Saem daí a proposta reescrita e os materiais que seu time usa para sustentar o preço sem recorrer a desconto.</p>
+              </div>
+
+              <div class="phase-art" aria-hidden="true">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 180 190" fill="none">
+                  <defs>
+                    <linearGradient id="sheet-2" x1="35" y1="35" x2="140" y2="155" gradientUnits="userSpaceOnUse">
+                      <stop stop-color="#f5f2df"/>
+                      <stop offset="1" stop-color="#b8c2a2"/>
+                    </linearGradient>
+                  </defs>
+                  <ellipse cx="91" cy="171" rx="63" ry="7" fill="#354b24" opacity=".07"/>
+                  <g stroke-linecap="round" stroke-linejoin="round">
+                    <path d="m31 51 68-15 25 111-68 15z" fill="#94a37c"/>
+                    <rect x="56" y="38" width="80" height="113" rx="7" fill="url(#sheet-2)"/>
+                    <path d="M75 64h34M75 81h42M75 98h29" stroke="#8f9e78" stroke-width="5"/>
+                    <path d="m84 124 8 8 19-22" stroke="#516c3c" stroke-width="5"/>
+                  </g>
+                </svg>
+              </div>
+
+              <button class="phase-select" data-card="1" type="button" aria-label="Ver etapa 2"></button>
+            </article>
+
+            <article class="slide" id="phase-3" role="group" aria-roledescription="slide" aria-label="3 de 5">
+              <div class="phase-copy">
+                <h3>Dias 26 a 50, canais de aquisição.</h3>
+                <p>Escolhemos até três canais e colocamos os três para funcionar. O limite faz parte do método, porque em 90 dias espalhar esforço por sete frentes garante uma execução ruim em todas. A escolha considera onde seu cliente está, quanto custa chegar nele e quanto tempo aquele canal leva para gerar a primeira oportunidade.</p>
+              </div>
+
+              <div class="phase-art" aria-hidden="true">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 180 190" fill="none">
+                  <defs>
+                    <linearGradient id="sheet-3" x1="35" y1="35" x2="140" y2="155" gradientUnits="userSpaceOnUse">
+                      <stop stop-color="#f5f2df"/>
+                      <stop offset="1" stop-color="#b8c2a2"/>
+                    </linearGradient>
+                  </defs>
+                  <ellipse cx="91" cy="171" rx="63" ry="7" fill="#354b24" opacity=".07"/>
+                  <g stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M50 54h31q15 0 15 16v66M50 97h69M50 139h31q15 0 15-16" stroke="#7e9165" stroke-width="4"/>
+                    <rect x="21" y="36" width="34" height="34" rx="7" fill="url(#sheet-3)"/>
+                    <rect x="21" y="80" width="34" height="34" rx="7" fill="url(#sheet-3)"/>
+                    <rect x="21" y="124" width="34" height="34" rx="7" fill="url(#sheet-3)"/>
+                    <rect x="116" y="75" width="42" height="42" rx="10" fill="#50663b"/>
+                    <path d="m128 96 6 6 13-15" stroke="#e5dec0" stroke-width="3"/>
+                  </g>
+                </svg>
+              </div>
+
+              <button class="phase-select" data-card="2" type="button" aria-label="Ver etapa 3"></button>
+            </article>
+
+            <article class="slide" id="phase-4" role="group" aria-roledescription="slide" aria-label="4 de 5">
+              <div class="phase-copy">
+                <h3>Dias 51 a 70, processo de fechamento.</h3>
+                <p>Organizo o caminho que vai do primeiro contato até o contrato assinado. Quem responde, em quanto tempo, com quais perguntas de triagem, como a reunião é conduzida, como a proposta é enviada e quantas vezes ela é retomada. Fica escrito o que conta como oportunidade qualificada, e cada negociação passa a ficar registrada num lugar só.</p>
+              </div>
+
+              <div class="phase-art" aria-hidden="true">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 180 190" fill="none">
+                  <defs>
+                    <linearGradient id="sheet-4" x1="35" y1="35" x2="140" y2="155" gradientUnits="userSpaceOnUse">
+                      <stop stop-color="#f5f2df"/>
+                      <stop offset="1" stop-color="#b8c2a2"/>
+                    </linearGradient>
+                  </defs>
+                  <ellipse cx="91" cy="171" rx="63" ry="7" fill="#354b24" opacity=".07"/>
+                  <g stroke-linecap="round" stroke-linejoin="round">
+                    <path d="m28 113 28-26 30 30 58-66" stroke="#7d8e65" stroke-width="3"/>
+                    <rect x="33" y="57" width="42" height="74" rx="6" fill="#9daa89"/>
+                    <rect x="79" y="76" width="52" height="75" rx="6" fill="url(#sheet-4)"/>
+                    <circle cx="122" cy="131" r="23" fill="#50643b"/>
+                    <path d="m110 131 8 8 16-19" stroke="#e3ddbe" stroke-width="4"/>
+                  </g>
+                </svg>
+              </div>
+
+              <button class="phase-select" data-card="3" type="button" aria-label="Ver etapa 4"></button>
+            </article>
+
+            <article class="slide" id="phase-5" role="group" aria-roledescription="slide" aria-label="5 de 5">
+              <div class="phase-copy">
+                <h3>Dias 71 a 90, ajuste e documentação.</h3>
+                <p>Com o sistema rodando, olhamos onde as oportunidades estão se perdendo e corrigimos. No fim, tudo que foi montado vira um playbook comercial, para que um vendedor novo consiga operar sem depender da sua memória.</p>
+              </div>
+
+              <div class="phase-art" aria-hidden="true">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 180 190" fill="none">
+                  <defs>
+                    <linearGradient id="sheet-5" x1="35" y1="35" x2="140" y2="155" gradientUnits="userSpaceOnUse">
+                      <stop stop-color="#f5f2df"/>
+                      <stop offset="1" stop-color="#b8c2a2"/>
+                    </linearGradient>
+                  </defs>
+                  <ellipse cx="91" cy="171" rx="63" ry="7" fill="#354b24" opacity=".07"/>
+                  <g stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M32 58q0-12 12-12h82l13 18v93H44q-12 0-12-12z" fill="#849773"/>
+                    <path d="M43 38h88v105H43q-10 0-10 10V48q0-10 10-10z" fill="url(#sheet-5)"/>
+                    <path d="M53 38v105" stroke="#c2c9ac" stroke-width="3"/>
+                    <path d="M71 62h40M71 78h30" stroke="#96a17d" stroke-width="4"/>
+                    <path d="m80 111 9 9 17-20" stroke="#577144" stroke-width="5"/>
+                  </g>
+                </svg>
+              </div>
+
+              <button class="phase-select" data-card="4" type="button" aria-label="Ver etapa 5"></button>
+            </article>
+          </div>
+
+          <div class="carousel-controls">
+            <button id="prev" class="round-button" type="button" aria-label="Etapa anterior">
+              <svg class="icon" aria-hidden="true"><use href="#arrow"/></svg>
+            </button>
+
+            <div class="carousel-dots" aria-label="Selecionar etapa">
+              <button type="button" data-slide="0" aria-label="Ir para a etapa 1" aria-current="true"></button>
+              <button type="button" data-slide="1" aria-label="Ir para a etapa 2" aria-current="false"></button>
+              <button type="button" data-slide="2" aria-label="Ir para a etapa 3" aria-current="false"></button>
+              <button type="button" data-slide="3" aria-label="Ir para a etapa 4" aria-current="false"></button>
+              <button type="button" data-slide="4" aria-label="Ir para a etapa 5" aria-current="false"></button>
+            </div>
+
+            <button id="next" class="round-button" type="button" aria-label="Próxima etapa">
+              <svg class="icon" aria-hidden="true"><use href="#arrow"/></svg>
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- EXECUÇÃO -->
+
+    <section class="section working" id="execucao">
+      <div class="shell">
+        <div class="section-heading reveal">
+          <h2>Como a gente trabalha durante os 90 dias</h2>
+          <p>Eu entro dentro da operação junto com o seu time, em vez de entregar um diagnóstico e desejar boa sorte. A execução é a parte difícil, e é nela que a maioria dos projetos de consultoria morre.</p>
+        </div>
+
+        <div class="work-pair">
+          <article class="work-card reveal">
+            <h3>Comigo ficam</h3>
+            <p>o diagnóstico e a estrutura das metas, a reescrita da oferta e da proposta, a montagem da estratégia dos canais de aquisição escolhidos (marketing, posicionamento, roteiros, criativos, sequências de contato, textos de prospecção), os scripts de triagem e de follow-up, a planilha de acompanhamento e uma reunião semanal de ajuste.</p>
           </article>
 
-          <article class="attempt-card reveal">
-            <span class="attempt-icon">
-              <svg class="icon" aria-hidden="true"><use href="#chart"/></svg>
-            </span>
-            <div>
-              <h3>Aumentou o investimento em anúncios.</h3>
-              <p>Entrou muita gente perguntando preço e sumindo. Mas o problema estava antes do anúncio, numa oferta genérica demais para filtrar e numa recepção comercial sem triagem nenhuma. Tráfego amplifica o que já existe, inclusive a bagunça.</p>
-            </div>
+          <article class="work-card reveal">
+            <h3>Com você ficam</h3>
+            <p>o acesso aos dados e às conversas comerciais, os atendimentos, reuniões com clientes, a presença de quem vende em reunião de alinhamento quinzenal comigo, a aprovação dos materiais e a cobrança para que o time siga o processo definido.</p>
           </article>
         </div>
 
-        <p class="section-ending centered reveal">Os três movimentos faziam sentido. Os três foram investimentos feitos sem uma conta atrás e sem processo na frente.</p>
-      </div>
-    </div>
-  </section>
-
-  <!-- CALCULADORA -->
-  <section class="section acquisition" id="conta">
-    <div class="shell">
-      <div class="section-heading reveal">
-        <h2>Primeiro os números, depois o canal de aquisição</h2>
-        <p>A Rota 90 inverte a ordem. Antes de decidir onde investir, a gente calcula quanto sua empresa precisa gerar.</p>
-      </div>
-
-      <div class="calculator reveal">
-        <p class="example-title"><strong>Um exemplo de como essa conta fica:</strong></p>
-
-        <div class="calc-grid">
-          <div class="calc-cell">
-            <label for="goal">Meta de <strong id="goal-value">R$60 mil</strong> em vendas novas.</label>
-            <input
-              type="range"
-              id="goal"
-              min="15000"
-              max="300000"
-              step="5000"
-              value="60000"
-              aria-label="Meta de vendas novas em reais"
-            >
-          </div>
-
-          <div class="calc-cell">
-            <label for="ticket">Ticket médio de <strong id="ticket-value">R$15 mil</strong>, então são <strong><span id="contracts">4</span> <span id="contract-noun">contratos</span></strong>.</label>
-            <input
-              type="range"
-              id="ticket"
-              min="3000"
-              max="50000"
-              step="1000"
-              value="15000"
-              aria-label="Ticket médio em reais"
-            >
-          </div>
-
-          <div class="calc-cell result-cell">
-            <svg class="icon" aria-hidden="true"><use href="#people"/></svg>
-            <p>Sua empresa fecha um a cada quatro reuniões, então são <strong><span id="meetings">16</span> reuniões.</strong></p>
-          </div>
-
-          <div class="calc-cell result-cell">
-            <svg class="icon" aria-hidden="true"><use href="#target"/></svg>
-            <p>Metade das oportunidades vira reunião, então são <strong><span id="opportunities">32</span> oportunidades qualificadas.</strong></p>
-          </div>
-        </div>
-      </div>
-
-      <div class="calculator-ending reveal">
-        <p>Daí em diante o projeto inteiro responde uma pergunta só.</p>
-        <h3 id="acquisition-question">Como gerar 32 oportunidades qualificadas por mês nessa empresa?</h3>
-        <p>A resposta muda conforme o mercado, o ticket e o lugar onde seu cliente está, mas a pergunta permanece a mesma o tempo todo. É isso que transforma a maneira como a empresa se posiciona no mercado, para atrair as pessoas certas.</p>
-      </div>
-    </div>
-  </section>
-
-  <!-- CARROSSEL -->
-  <section class="section route" id="rota">
-    <div class="shell">
-      <div class="section-heading reveal">
-        <h2>Rota 90, <em>Sistema de Aquisição e Crescimento</em></h2>
-        <p>Noventa dias organizando, dentro da sua empresa, a estrutura que gera oportunidades, qualifica, fecha e registra de onde veio cada contrato.</p>
-      </div>
-
-      <div class="carousel" role="region" aria-roledescription="carrossel" aria-label="Etapas da Rota 90">
-        <div class="slides" id="slides" tabindex="0" aria-live="polite">
-
-          <article class="slide is-active" id="phase-1" role="group" aria-roledescription="slide" aria-label="1 de 5">
-            <div class="phase-copy">
-              <h3>Dias 1 a 10, diagnóstico e números.</h3>
-              <p>Eu entro nos seus dados dos últimos seis a doze meses, converso com algumas pessoas da sua empresa e reconstruo o caminho que seus clientes atuais percorreram até assinar. Desse levantamento sai quanto entra de oportunidade hoje, onde elas se perdem e quantas você precisa gerar por mês para bater a meta. Na mesma semana, alguém do seu time vai olhar as propostas paradas e os orçamentos sem resposta, porque costuma haver oportunidade de novos contratos aí.</p>
-            </div>
-
-            <div class="phase-art" aria-hidden="true">
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 180 190" fill="none">
-                <defs>
-                  <linearGradient id="sheet-1" x1="35" y1="35" x2="140" y2="155" gradientUnits="userSpaceOnUse">
-                    <stop stop-color="#f5f2df"/>
-                    <stop offset="1" stop-color="#b8c2a2"/>
-                  </linearGradient>
-                </defs>
-                <ellipse cx="91" cy="171" rx="63" ry="7" fill="#354b24" opacity=".07"/>
-                <g stroke-linecap="round" stroke-linejoin="round">
-                  <rect x="32" y="35" width="75" height="90" rx="8" fill="url(#sheet-1)"/>
-                  <path d="M48 94V78m16 16V64m16 30V54" stroke="#8a9872" stroke-width="7"/>
-                  <circle cx="105" cy="110" r="27" fill="#d6dcc5" stroke="#4c603b" stroke-width="9"/>
-                  <path d="m124 130 18 20" stroke="#4c603b" stroke-width="12"/>
-                </g>
-              </svg>
-            </div>
-
-            <button class="phase-select" data-card="0" type="button" aria-label="Ver etapa 1" hidden></button>
-          </article>
-
-          <article class="slide" id="phase-2" role="group" aria-roledescription="slide" aria-label="2 de 5">
-            <div class="phase-copy">
-              <h3>Dias 11 a 25, oferta e proposta comercial.</h3>
-              <p>Reviso o que sua empresa vende e como isso chega ao cliente. Escopo, ticket, argumentos, estrutura da proposta e as objeções que mais aparecem nas reuniões. Saem daí a proposta reescrita e os materiais que seu time usa para sustentar o preço sem recorrer a desconto.</p>
-            </div>
-
-            <div class="phase-art" aria-hidden="true">
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 180 190" fill="none">
-                <defs>
-                  <linearGradient id="sheet-2" x1="35" y1="35" x2="140" y2="155" gradientUnits="userSpaceOnUse">
-                    <stop stop-color="#f5f2df"/>
-                    <stop offset="1" stop-color="#b8c2a2"/>
-                  </linearGradient>
-                </defs>
-                <ellipse cx="91" cy="171" rx="63" ry="7" fill="#354b24" opacity=".07"/>
-                <g stroke-linecap="round" stroke-linejoin="round">
-                  <path d="m31 51 68-15 25 111-68 15z" fill="#94a37c"/>
-                  <rect x="56" y="38" width="80" height="113" rx="7" fill="url(#sheet-2)"/>
-                  <path d="M75 64h34M75 81h42M75 98h29" stroke="#8f9e78" stroke-width="5"/>
-                  <path d="m84 124 8 8 19-22" stroke="#516c3c" stroke-width="5"/>
-                </g>
-              </svg>
-            </div>
-
-            <button class="phase-select" data-card="1" type="button" aria-label="Ver etapa 2"></button>
-          </article>
-
-          <article class="slide" id="phase-3" role="group" aria-roledescription="slide" aria-label="3 de 5">
-            <div class="phase-copy">
-              <h3>Dias 26 a 50, canais de aquisição.</h3>
-              <p>Escolhemos até três canais e colocamos os três para funcionar. O limite faz parte do método, porque em 90 dias espalhar esforço por sete frentes garante uma execução ruim em todas. A escolha considera onde seu cliente está, quanto custa chegar nele e quanto tempo aquele canal leva para gerar a primeira oportunidade.</p>
-            </div>
-
-            <div class="phase-art" aria-hidden="true">
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 180 190" fill="none">
-                <defs>
-                  <linearGradient id="sheet-3" x1="35" y1="35" x2="140" y2="155" gradientUnits="userSpaceOnUse">
-                    <stop stop-color="#f5f2df"/>
-                    <stop offset="1" stop-color="#b8c2a2"/>
-                  </linearGradient>
-                </defs>
-                <ellipse cx="91" cy="171" rx="63" ry="7" fill="#354b24" opacity=".07"/>
-                <g stroke-linecap="round" stroke-linejoin="round">
-                  <path d="M50 54h31q15 0 15 16v66M50 97h69M50 139h31q15 0 15-16" stroke="#7e9165" stroke-width="4"/>
-                  <rect x="21" y="36" width="34" height="34" rx="7" fill="url(#sheet-3)"/>
-                  <rect x="21" y="80" width="34" height="34" rx="7" fill="url(#sheet-3)"/>
-                  <rect x="21" y="124" width="34" height="34" rx="7" fill="url(#sheet-3)"/>
-                  <rect x="116" y="75" width="42" height="42" rx="10" fill="#50663b"/>
-                  <path d="m128 96 6 6 13-15" stroke="#e5dec0" stroke-width="3"/>
-                </g>
-              </svg>
-            </div>
-
-            <button class="phase-select" data-card="2" type="button" aria-label="Ver etapa 3"></button>
-          </article>
-
-          <article class="slide" id="phase-4" role="group" aria-roledescription="slide" aria-label="4 de 5">
-            <div class="phase-copy">
-              <h3>Dias 51 a 70, processo de fechamento.</h3>
-              <p>Organizo o caminho que vai do primeiro contato até o contrato assinado. Quem responde, em quanto tempo, com quais perguntas de triagem, como a reunião é conduzida, como a proposta é enviada e quantas vezes ela é retomada. Fica escrito o que conta como oportunidade qualificada, e cada negociação passa a ficar registrada num lugar só.</p>
-            </div>
-
-            <div class="phase-art" aria-hidden="true">
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 180 190" fill="none">
-                <defs>
-                  <linearGradient id="sheet-4" x1="35" y1="35" x2="140" y2="155" gradientUnits="userSpaceOnUse">
-                    <stop stop-color="#f5f2df"/>
-                    <stop offset="1" stop-color="#b8c2a2"/>
-                  </linearGradient>
-                </defs>
-                <ellipse cx="91" cy="171" rx="63" ry="7" fill="#354b24" opacity=".07"/>
-                <g stroke-linecap="round" stroke-linejoin="round">
-                  <path d="m28 113 28-26 30 30 58-66" stroke="#7d8e65" stroke-width="3"/>
-                  <rect x="33" y="57" width="42" height="74" rx="6" fill="#9daa89"/>
-                  <rect x="79" y="76" width="52" height="75" rx="6" fill="url(#sheet-4)"/>
-                  <circle cx="122" cy="131" r="23" fill="#50643b"/>
-                  <path d="m110 131 8 8 16-19" stroke="#e3ddbe" stroke-width="4"/>
-                </g>
-              </svg>
-            </div>
-
-            <button class="phase-select" data-card="3" type="button" aria-label="Ver etapa 4"></button>
-          </article>
-
-          <article class="slide" id="phase-5" role="group" aria-roledescription="slide" aria-label="5 de 5">
-            <div class="phase-copy">
-              <h3>Dias 71 a 90, ajuste e documentação.</h3>
-              <p>Com o sistema rodando, olhamos onde as oportunidades estão se perdendo e corrigimos. No fim, tudo que foi montado vira um playbook comercial, para que um vendedor novo consiga operar sem depender da sua memória.</p>
-            </div>
-
-            <div class="phase-art" aria-hidden="true">
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 180 190" fill="none">
-                <defs>
-                  <linearGradient id="sheet-5" x1="35" y1="35" x2="140" y2="155" gradientUnits="userSpaceOnUse">
-                    <stop stop-color="#f5f2df"/>
-                    <stop offset="1" stop-color="#b8c2a2"/>
-                  </linearGradient>
-                </defs>
-                <ellipse cx="91" cy="171" rx="63" ry="7" fill="#354b24" opacity=".07"/>
-                <g stroke-linecap="round" stroke-linejoin="round">
-                  <path d="M32 58q0-12 12-12h82l13 18v93H44q-12 0-12-12z" fill="#849773"/>
-                  <path d="M43 38h88v105H43q-10 0-10 10V48q0-10 10-10z" fill="url(#sheet-5)"/>
-                  <path d="M53 38v105" stroke="#c2c9ac" stroke-width="3"/>
-                  <path d="M71 62h40M71 78h30" stroke="#96a17d" stroke-width="4"/>
-                  <path d="m80 111 9 9 17-20" stroke="#577144" stroke-width="5"/>
-                </g>
-              </svg>
-            </div>
-
-            <button class="phase-select" data-card="4" type="button" aria-label="Ver etapa 5"></button>
-          </article>
-
-        </div>
-
-        <div class="carousel-controls">
-          <button id="prev" class="round-button" type="button" aria-label="Etapa anterior">
-            <svg class="icon" aria-hidden="true"><use href="#arrow"/></svg>
-          </button>
-
-          <div class="carousel-dots" aria-label="Selecionar etapa">
-            <button type="button" data-slide="0" aria-label="Ir para a etapa 1" aria-current="true"></button>
-            <button type="button" data-slide="1" aria-label="Ir para a etapa 2" aria-current="false"></button>
-            <button type="button" data-slide="2" aria-label="Ir para a etapa 3" aria-current="false"></button>
-            <button type="button" data-slide="3" aria-label="Ir para a etapa 4" aria-current="false"></button>
-            <button type="button" data-slide="4" aria-label="Ir para a etapa 5" aria-current="false"></button>
-          </div>
-
-          <button id="next" class="round-button" type="button" aria-label="Próxima etapa">
-            <svg class="icon" aria-hidden="true"><use href="#arrow"/></svg>
-          </button>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- EXECUÇÃO -->
-  <section class="section working" id="execucao">
-    <div class="shell">
-      <div class="section-heading reveal">
-        <h2>Como a gente trabalha durante os 90 dias</h2>
-        <p>Eu entro dentro da operação junto com o seu time, em vez de entregar um diagnóstico e desejar boa sorte. A execução é a parte difícil, e é nela que a maioria dos projetos de consultoria morre.</p>
-      </div>
-
-      <div class="work-pair">
-        <article class="work-card reveal">
-          <h3>Comigo ficam</h3>
-          <p>o diagnóstico e a estrutura das metas, a reescrita da oferta e da proposta, a montagem da estratégia dos canais de aquisição escolhidos (marketing, posicionamento, roteiros, criativos, sequências de contato, textos de prospecção), os scripts de triagem e de follow-up, a planilha de acompanhamento e uma reunião semanal de ajuste.</p>
-        </article>
-
-        <article class="work-card reveal">
-          <h3>Com você ficam</h3>
-          <p>o acesso aos dados e às conversas comerciais, os atendimentos, reuniões com clientes, a presença de quem vende em reunião de alinhamento quinzenal comigo, a aprovação dos materiais e a cobrança para que o time siga o processo definido.</p>
-        </article>
-      </div>
-
-      <div class="deliver-panel reveal">
-        <h3>Ao fim dos 90 dias, cinco coisas continuam funcionando depois que eu saio.</h3>
-        <ul>
-          <li>Sua meta traduzida em número de oportunidades, reuniões e propostas por mês;</li>
-          <li>Sua oferta e sua proposta comercial organizadas;</li>
-          <li>Até três canais operando, com o passo a passo documentado;</li>
-          <li>Seu processo de fechamento escrito e organizado, do primeiro contato ao contrato;</li>
-          <li>Uma planilha de acompanhamento semanal com oportunidades, reuniões, propostas, contratos, ticket médio e origem de cada oportunidade (Aqui é alguém do seu time que fica responsável por preencher).</li>
-        </ul>
-      </div>
-
-      <div class="fit-block">
-        <div class="fit-card reveal">
-          <h2>Para quem esse projeto funciona:</h2>
+        <div class="deliver-panel reveal">
+          <h3>Ao fim dos 90 dias, cinco coisas continuam funcionando depois que eu saio.</h3>
           <ul>
-            <li>Sua empresa fatura acima de R$100 mil por mês e vende serviço com ticket alto;</li>
-            <li>A venda acontece em reunião, com proposta e negociação;</li>
-            <li>A operação aguenta atender mais clientes do que atende hoje;</li>
-            <li>Existe alguém além de você envolvido no comercial, mesmo que seja uma pessoa só;</li>
-            <li>Você tem uma hora por semana e autoridade para mudar processo interno;</li>
-            <li>Você até vende bem, mas os processos internos da empresa não estão organizados como deveriam.</li>
+            <li>Sua meta traduzida em número de oportunidades, reuniões e propostas por mês;</li>
+            <li>Sua oferta e sua proposta comercial organizadas;</li>
+            <li>Até três canais operando, com o passo a passo documentado;</li>
+            <li>Seu processo de fechamento escrito e organizado, do primeiro contato ao contrato;</li>
+            <li>Uma planilha de acompanhamento semanal com oportunidades, reuniões, propostas, contratos, ticket médio e origem de cada oportunidade (Aqui é alguém do seu time que fica responsável por preencher).</li>
           </ul>
         </div>
 
-        <div class="fit-card fit-no reveal">
-          <h2>E para quem não é:</h2>
-          <ul>
-            <li>Seu faturamento ainda está abaixo de R$100 mil por mês;</li>
-            <li>Você procura alguém para assumir a área comercial no seu lugar;</li>
-            <li>Sua expectativa é de resultado em trinta dias;</li>
-            <li>O time atual já entrega no limite e mais demanda pioraria o serviço.</li>
-          </ul>
+        <div class="fit-block">
+          <div class="fit-card reveal">
+            <h2>Para quem esse projeto funciona:</h2>
+            <ul>
+              <li>Sua empresa fatura acima de R$100 mil por mês e vende serviço com ticket alto;</li>
+              <li>A venda acontece em reunião, com proposta e negociação;</li>
+              <li>A operação aguenta atender mais clientes do que atende hoje;</li>
+              <li>Existe alguém além de você envolvido no comercial, mesmo que seja uma pessoa só;</li>
+              <li>Você tem uma hora por semana e autoridade para mudar processo interno;</li>
+              <li>Você até vende bem, mas os processos internos da empresa não estão organizados como deveriam.</li>
+            </ul>
+          </div>
+
+          <div class="fit-card fit-no reveal">
+            <h2>E para quem não é:</h2>
+            <ul>
+              <li>Seu faturamento ainda está abaixo de R$100 mil por mês;</li>
+              <li>Você procura alguém para assumir a área comercial no seu lugar;</li>
+              <li>Sua expectativa é de resultado em trinta dias;</li>
+              <li>O time atual já entrega no limite e mais demanda pioraria o serviço.</li>
+            </ul>
+          </div>
+
+          <p class="fit-note centered reveal"><strong>O que eu entrego é somente a organização.</strong> Meta traduzida em número, oferta clara, canais funcionando, processo de fechamento escrito e acompanhamento semanal. Empresa organizada tem chance muito maior de bater a meta do que empresa que vende no improviso, e é exatamente por isso que esse trabalho existe.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- SOBRE -->
+
+    <section class="section about" id="ian">
+      <div class="shell about-grid">
+        <div class="portrait-composition">
+          <div class="portrait-slot">
+            <img
+              src="fotoSobre.jpg"
+              alt="Ian Henrique"
+              loading="lazy"
+              decoding="async"
+            >
+          </div>
+          <span class="portrait-corner" aria-hidden="true"></span>
         </div>
 
-        <p class="fit-note centered reveal"><strong>O que eu entrego é somente a organização.</strong> Meta traduzida em número, oferta clara, canais funcionando, processo de fechamento escrito e acompanhamento semanal. Empresa organizada tem chance muito maior de bater a meta do que empresa que vende no improviso, e é exatamente por isso que esse trabalho existe.</p>
-      </div>
-    </div>
-  </section>
+        <div class="about-copy reveal">
+          <h2>Quem vai entrar na <em>sua operação</em></h2>
 
-  <!-- SOBRE -->
-  <section class="section about" id="ian">
-    <div class="shell about-grid">
-      <div class="portrait-composition">
-        <div class="portrait-slot">
-          <img
-            src="fotoSobre.jpg"
-            alt="Ian Henrique"
-            loading="lazy"
-            decoding="async"
+          <p>Eu comecei em 2022 numa produtora de marketing digital, na equipe que fez os lançamentos de João Menna, Nathalia Heringer, Tamara Silveira e Felipe Nunes. Depois passei um ano e cinco meses no marketing da West Imob, uma das maiores imobiliárias do Oeste da Bahia, onde nossas campanhas, somadas a um atendimento muito bem feito pelos corretores, ajudaram a gerar milhões em VGV.</p>
+
+          <p>Foi na imobiliária que eu entendi na prática que campanha boa só vira contrato quando existe um processo comercial preparado para receber o lead. Depois desse período, decidi voltar o foco para o crescimento de profissionais e empresas no mercado digital, somando essa experiência a muito estudo de marketing e vendas por conta própria.</p>
+
+          <p>O caso que mais me marcou foi o da Dra. Fáthima Oliveira, fonoaudióloga com autoridade consolidada fora da internet e pouca clareza disso no digital. Alinhamos posicionamento, conteúdo e produtos, e o perfil dela saiu de 8 mil para mais de 50 mil seguidores em menos de nove meses, com o negócio crescendo junto. A Rota 90 nasceu desse caminho, como um projeto de 90 dias para organizar a forma como a sua empresa atrai e fecha clientes.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- DIAGNÓSTICO -->
+
+    <section class="section closing" id="diagnostico">
+      <div class="shell">
+        <div class="section-heading reveal">
+          <h2>O que acontece quando você clica no botão</h2>
+
+          <p>Você escolhe um horário e responde quatro perguntas curtas sobre a sua empresa. O que vocês vendem, para quem, o ticket médio e a meta dos próximos meses.</p>
+
+          <p>Na reunião, montamos a sua conta de aquisição com os seus números, eu aponto onde o processo atual está vazando e digo com franqueza se a Rota 90 resolve o seu caso. Se resolver, apresento escopo, investimento e condições. Se o seu caso for outro, eu digo qual é, e você sai com a conta feita de qualquer forma.</p>
+        </div>
+
+        <div class="closing-cta reveal">
+          <a
+            class="button button-light"
+            href="https://www.instagram.com/o.ianhenrique/"
+            target="_blank"
+            rel="noopener noreferrer"
           >
+            Quero agendar o diagnóstico
+            <span>
+              <svg class="icon" aria-hidden="true"><use href="#up-right"/></svg>
+            </span>
+          </a>
+
+          <p>Em uma reunião nós vamos entender como está a sua empresa hoje, quais as metas dos próximos meses e entender se o ROTA 90 faz sentido para o seu momento.</p>
         </div>
-        <span class="portrait-corner" aria-hidden="true"></span>
+
+        <div class="faq">
+          <details>
+            <summary>
+              <strong>Já contratei agência e continuei no mesmo lugar.</strong>
+              <svg class="icon" aria-hidden="true"><use href="#plus"/></svg>
+            </summary>
+            <p>Agência é contratada para produzir e distribuir conteúdo, e é medida por alcance e engajamento. Os dois sobem enquanto a quantidade de reuniões comerciais fica igual. A Rota 90 é medida por oportunidade qualificada, reunião, proposta e contrato assinado.</p>
+          </details>
+
+          <details>
+            <summary>
+              <strong>Noventa dias é muito tempo. Acontece alguma coisa antes?</strong>
+              <svg class="icon" aria-hidden="true"><use href="#plus"/></svg>
+            </summary>
+            <p>A varredura da primeira semana movimenta as propostas e os orçamentos que já estão parados na sua base. O diagnóstico com os números fica pronto no dia 10 e a proposta comercial reescrita no dia 25, então há entrega para avaliar bem antes do fim.</p>
+          </details>
+
+          <details>
+            <summary>
+              <strong>E se a empresa passar 90 dias sem crescer o faturamento?</strong>
+              <svg class="icon" aria-hidden="true"><use href="#plus"/></svg>
+            </summary>
+            <p>Pode acontecer, principalmente em ciclo de venda longo. Mesmo nesse cenário, no dia 90 você consegue apontar em qual etapa as oportunidades estão se perdendo, e passa a corrigir com informação em vez de tentar de novo no escuro.</p>
+          </details>
+
+          <details>
+            <summary>
+              <strong>Quanto custa?</strong>
+              <svg class="icon" aria-hidden="true"><use href="#plus"/></svg>
+            </summary>
+            <p>Eu apresento o investimento no fim do diagnóstico, depois de entender o tamanho da operação e o escopo do que precisa ser montado. Uma empresa com três canais e cinco vendedores exige um projeto diferente de uma empresa com um canal e o dono vendendo.</p>
+          </details>
+        </div>
+
+        <footer>
+          <a class="wordmark" href="#inicio" aria-label="Voltar ao início">rota<span>90</span></a>
+        </footer>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- LEITURA DOS TRÊS MOVIMENTOS -->
+
+  <dialog id="movement-dialog" aria-label="Três movimentos que quase toda empresa fez antes de chegar aqui">
+    <div class="movement-dialog-top">
+      <div class="movement-tabs" role="tablist" aria-label="Escolher movimento">
+        <button
+          role="tab"
+          id="movement-tab-0"
+          type="button"
+          data-tab="0"
+          aria-controls="movement-panel-0"
+          aria-selected="true"
+          tabindex="0"
+        >Agência</button>
+
+        <button
+          role="tab"
+          id="movement-tab-1"
+          type="button"
+          data-tab="1"
+          aria-controls="movement-panel-1"
+          aria-selected="false"
+          tabindex="-1"
+        >Vendedor</button>
+
+        <button
+          role="tab"
+          id="movement-tab-2"
+          type="button"
+          data-tab="2"
+          aria-controls="movement-panel-2"
+          aria-selected="false"
+          tabindex="-1"
+        >Anúncios</button>
       </div>
 
-      <div class="about-copy reveal">
-        <h2>Quem vai entrar na <em>sua operação</em></h2>
-
-        <p>Eu comecei em 2022 numa produtora de marketing digital, na equipe que fez os lançamentos de João Menna, Nathalia Heringer, Tamara Silveira e Felipe Nunes. Depois passei um ano e cinco meses no marketing da West Imob, uma das maiores imobiliárias do Oeste da Bahia, onde nossas campanhas, somadas a um atendimento muito bem feito pelos corretores, ajudaram a gerar milhões em VGV.</p>
-
-        <p>Foi na imobiliária que eu entendi na prática que campanha boa só vira contrato quando existe um processo comercial preparado para receber o lead. Depois desse período, decidi voltar o foco para o crescimento de profissionais e empresas no mercado digital, somando essa experiência a muito estudo de marketing e vendas por conta própria.</p>
-
-        <p>O caso que mais me marcou foi o da Dra. Fáthima Oliveira, fonoaudióloga com autoridade consolidada fora da internet e pouca clareza disso no digital. Alinhamos posicionamento, conteúdo e produtos, e o perfil dela saiu de 8 mil para mais de 50 mil seguidores em menos de nove meses, com o negócio crescendo junto. A Rota 90 nasceu desse caminho, como um projeto de 90 dias para organizar a forma como a sua empresa atrai e fecha clientes.</p>
-      </div>
+      <button class="movement-close" type="button" aria-label="Fechar leitura">
+        <svg class="icon" aria-hidden="true"><use href="#plus"/></svg>
+      </button>
     </div>
-  </section>
 
-  <!-- DIAGNÓSTICO E FAQ -->
-  <section class="section closing" id="diagnostico">
-    <div class="shell">
-      <div class="section-heading reveal">
-        <h2>O que acontece quando você clica no botão</h2>
+    <div class="movement-reading">
+      <article
+        role="tabpanel"
+        id="movement-panel-0"
+        aria-labelledby="movement-tab-0"
+        tabindex="0"
+      >
+        <h3>Contratou uma agência.</h3>
+        <p>O material melhorou, o feed ficou organizado e o relatório mostra alcance. A quantidade de reuniões comerciais seguiu igual, porque alcance e pedido de orçamento são coisas diferentes, e ninguém foi contratado para entregar a segunda.</p>
+      </article>
 
-        <p>Você escolhe um horário e responde quatro perguntas curtas sobre a sua empresa. O que vocês vendem, para quem, o ticket médio e a meta dos próximos meses.</p>
+      <article
+        role="tabpanel"
+        id="movement-panel-1"
+        aria-labelledby="movement-tab-1"
+        tabindex="0"
+        hidden
+      >
+        <h3>Contratou vendedor.</h3>
+        <p>A pessoa entrou sem processo definido, sem lista, sem meta diária de contato e sem critério de qualificação. Vendedor bom dentro de estrutura ruim produz o mesmo resultado que o dono produzia, só que com folha maior.</p>
+      </article>
 
-        <p>Na reunião, montamos a sua conta de aquisição com os seus números, eu aponto onde o processo atual está vazando e digo com franqueza se a Rota 90 resolve o seu caso. Se resolver, apresento escopo, investimento e condições. Se o seu caso for outro, eu digo qual é, e você sai com a conta feita de qualquer forma.</p>
-      </div>
-
-      <div class="closing-cta reveal">
-        <a class="button button-light" href="https://www.instagram.com/o.ianhenrique/" target="_blank" rel="noopener noreferrer">
-          Quero agendar o diagnóstico
-          <span>
-            <svg class="icon" aria-hidden="true"><use href="#up-right"/></svg>
-          </span>
-        </a>
-
-        <p>Em uma reunião nós vamos entender como está a sua empresa hoje, quais as metas dos próximos meses e entender se o ROTA 90 faz sentido para o seu momento.</p>
-      </div>
-
-      <div class="faq">
-        <details>
-          <summary>
-            <strong>Já contratei agência e continuei no mesmo lugar.</strong>
-            <svg class="icon" aria-hidden="true"><use href="#plus"/></svg>
-          </summary>
-          <p>Agência é contratada para produzir e distribuir conteúdo, e é medida por alcance e engajamento. Os dois sobem enquanto a quantidade de reuniões comerciais fica igual. A Rota 90 é medida por oportunidade qualificada, reunião, proposta e contrato assinado.</p>
-        </details>
-
-        <details>
-          <summary>
-            <strong>Noventa dias é muito tempo. Acontece alguma coisa antes?</strong>
-            <svg class="icon" aria-hidden="true"><use href="#plus"/></svg>
-          </summary>
-          <p>A varredura da primeira semana movimenta as propostas e os orçamentos que já estão parados na sua base. O diagnóstico com os números fica pronto no dia 10 e a proposta comercial reescrita no dia 25, então há entrega para avaliar bem antes do fim.</p>
-        </details>
-
-        <details>
-          <summary>
-            <strong>E se a empresa passar 90 dias sem crescer o faturamento?</strong>
-            <svg class="icon" aria-hidden="true"><use href="#plus"/></svg>
-          </summary>
-          <p>Pode acontecer, principalmente em ciclo de venda longo. Mesmo nesse cenário, no dia 90 você consegue apontar em qual etapa as oportunidades estão se perdendo, e passa a corrigir com informação em vez de tentar de novo no escuro.</p>
-        </details>
-
-        <details>
-          <summary>
-            <strong>Quanto custa?</strong>
-            <svg class="icon" aria-hidden="true"><use href="#plus"/></svg>
-          </summary>
-          <p>Eu apresento o investimento no fim do diagnóstico, depois de entender o tamanho da operação e o escopo do que precisa ser montado. Uma empresa com três canais e cinco vendedores exige um projeto diferente de uma empresa com um canal e o dono vendendo.</p>
-        </details>
-      </div>
-
-      <footer>
-        <a class="wordmark" href="#inicio" aria-label="Voltar ao início">rota<span>90</span></a>
-      </footer>
+      <article
+        role="tabpanel"
+        id="movement-panel-2"
+        aria-labelledby="movement-tab-2"
+        tabindex="0"
+        hidden
+      >
+        <h3>Aumentou o investimento em anúncios.</h3>
+        <p>Entrou muita gente perguntando preço e sumindo. Mas o problema estava antes do anúncio, numa oferta genérica demais para filtrar e numa recepção comercial sem triagem nenhuma. Tráfego amplifica o que já existe, inclusive a bagunça.</p>
+      </article>
     </div>
-  </section>
 
-</main>
+    <p class="movement-conclusion">Os três movimentos faziam sentido. Os três foram investimentos feitos sem uma conta atrás e sem processo na frente.</p>
+  </dialog>
 
-<script>
-(() => {
-  const reduced = matchMedia("(prefers-reduced-motion: reduce)");
+  <script>
+    (() => {
+      const reduced = matchMedia("(prefers-reduced-motion: reduce)");
 
-  // Calculadora
-  const goal = document.querySelector("#goal");
-  const ticket = document.querySelector("#ticket");
+      // Calculadora
 
-  const format = value =>
-    "R$" +
-    new Intl.NumberFormat("pt-BR", {
-      maximumFractionDigits: 1
-    }).format(value / 1000) +
-    " mil";
+      const goal = document.querySelector("#goal");
+      const ticket = document.querySelector("#ticket");
 
-  function calculate() {
-    const contracts = Math.ceil(Number(goal.value) / Number(ticket.value));
-    const meetings = contracts * 4;
-    const opportunities = meetings * 2;
+      const format = value =>
+        "R$" +
+        new Intl.NumberFormat("pt-BR", {
+          maximumFractionDigits: 1
+        }).format(value / 1000) +
+        " mil";
 
-    document.querySelector("#goal-value").textContent =
-      format(Number(goal.value));
+      function calculate() {
+        const contracts = Math.ceil(Number(goal.value) / Number(ticket.value));
+        const meetings = contracts * 4;
+        const opportunities = meetings * 2;
 
-    document.querySelector("#ticket-value").textContent =
-      format(Number(ticket.value));
+        document.querySelector("#goal-value").textContent =
+          format(Number(goal.value));
 
-    document.querySelector("#contracts").textContent = contracts;
+        document.querySelector("#ticket-value").textContent =
+          format(Number(ticket.value));
 
-    document.querySelector("#contract-noun").textContent =
-      contracts === 1 ? "contrato" : "contratos";
+        document.querySelector("#contracts").textContent = contracts;
 
-    document.querySelector("#meetings").textContent = meetings;
-    document.querySelector("#opportunities").textContent = opportunities;
+        document.querySelector("#contract-noun").textContent =
+          contracts === 1 ? "contrato" : "contratos";
 
-    document.querySelector("#acquisition-question").textContent =
-      "Como gerar " +
-      opportunities +
-      " oportunidades qualificadas por mês nessa empresa?";
+        document.querySelector("#meetings").textContent = meetings;
+        document.querySelector("#opportunities").textContent = opportunities;
 
-    goal.setAttribute("aria-valuetext", format(Number(goal.value)));
-    ticket.setAttribute("aria-valuetext", format(Number(ticket.value)));
-  }
+        document.querySelector("#acquisition-question").textContent =
+          "Como gerar " +
+          opportunities +
+          " oportunidades qualificadas por mês nessa empresa?";
 
-  goal.addEventListener("input", calculate);
-  ticket.addEventListener("input", calculate);
-  calculate();
-
-  // Carrossel
-  const track = document.querySelector("#slides");
-  const slides = [...track.querySelectorAll(".slide")];
-  const dots = [...document.querySelectorAll("[data-slide]")];
-  const previousButton = document.querySelector("#prev");
-  const nextButton = document.querySelector("#next");
-
-  let active = 0;
-  let down = null;
-  let swiped = false;
-
-  function update(index) {
-    active = (index + slides.length) % slides.length;
-
-    const shift = Math.min(295, track.clientWidth * 0.30);
-
-    slides.forEach((slide, index) => {
-      let offset = (index - active + slides.length) % slides.length;
-
-      if (offset > 2) {
-        offset -= slides.length;
+        goal.setAttribute("aria-valuetext", format(Number(goal.value)));
+        ticket.setAttribute("aria-valuetext", format(Number(ticket.value)));
       }
 
-      const distance = Math.abs(offset);
+      goal.addEventListener("input", calculate);
+      ticket.addEventListener("input", calculate);
+      calculate();
 
-      slide.style.setProperty("--shift", offset * shift + "px");
-      slide.style.setProperty("--scale", distance === 0 ? 1 : 0.81);
-      slide.style.setProperty("--opacity", distance <= 1 ? 1 : 0);
-      slide.style.setProperty("--layer", 3 - distance);
+      // Carrossel
 
-      slide.classList.toggle("is-active", distance === 0);
-      slide.classList.toggle("is-neighbor", distance === 1);
+      const track = document.querySelector("#slides");
+      const slides = [...track.querySelectorAll(".slide")];
+      const dots = [...document.querySelectorAll("[data-slide]")];
+      const prev = document.querySelector("#prev");
+      const next = document.querySelector("#next");
 
-      slide.setAttribute("aria-hidden", String(distance > 1));
+      let active = 0;
+      let down = null;
+      let swiped = false;
 
-      slide.querySelector(".phase-copy").setAttribute(
-        "aria-hidden",
-        String(distance !== 0)
-      );
+      function update(index) {
+        active = (index + slides.length) % slides.length;
 
-      const selectButton = slide.querySelector(".phase-select");
+        const shift = Math.min(295, track.clientWidth * 0.30);
 
-      selectButton.hidden = distance === 0;
-      selectButton.tabIndex = distance === 1 ? 0 : -1;
-    });
+        slides.forEach((slide, index) => {
+          let offset = (index - active + slides.length) % slides.length;
 
-    dots.forEach((dot, index) => {
-      dot.setAttribute("aria-current", String(index === active));
-    });
-  }
+          if (offset > 2) {
+            offset -= slides.length;
+          }
 
-  function fit() {
-    const height = Math.ceil(
-      Math.max(...slides.map(slide => slide.offsetHeight))
-    );
+          const distance = Math.abs(offset);
 
-    track.style.height = height + "px";
-    update(active);
-  }
+          slide.style.setProperty("--shift", offset * shift + "px");
+          slide.style.setProperty("--scale", distance === 0 ? 1 : 0.81);
+          slide.style.setProperty("--opacity", distance <= 1 ? 1 : 0);
+          slide.style.setProperty("--layer", 3 - distance);
 
-  previousButton.addEventListener("click", () => {
-    update(active - 1);
-  });
+          slide.classList.toggle("is-active", distance === 0);
+          slide.classList.toggle("is-neighbor", distance === 1);
 
-  nextButton.addEventListener("click", () => {
-    update(active + 1);
-  });
+          slide.setAttribute("aria-hidden", String(distance > 1));
 
-  dots.forEach((dot, index) => {
-    dot.addEventListener("click", () => update(index));
-  });
+          slide.querySelector(".phase-copy").setAttribute(
+            "aria-hidden",
+            String(distance !== 0)
+          );
 
-  document.querySelectorAll("[data-card]").forEach(button => {
-    button.addEventListener("click", event => {
-      if (!swiped || event.detail === 0) {
-        update(Number(button.dataset.card));
+          const selectButton = slide.querySelector(".phase-select");
+          selectButton.hidden = distance === 0;
+          selectButton.tabIndex = distance === 1 ? 0 : -1;
+        });
+
+        dots.forEach((dot, index) => {
+          dot.setAttribute("aria-current", String(index === active));
+        });
       }
-    });
-  });
 
-  track.addEventListener("keydown", event => {
-    if (event.key === "ArrowRight") {
-      event.preventDefault();
-      update(active + 1);
-    }
+      function fit() {
+        track.style.height =
+          Math.ceil(Math.max(...slides.map(slide => slide.offsetHeight))) + "px";
 
-    if (event.key === "ArrowLeft") {
-      event.preventDefault();
-      update(active - 1);
-    }
+        update(active);
+      }
 
-    if (event.key === "Home") {
-      event.preventDefault();
-      update(0);
-    }
+      prev.addEventListener("click", () => update(active - 1));
+      next.addEventListener("click", () => update(active + 1));
 
-    if (event.key === "End") {
-      event.preventDefault();
-      update(slides.length - 1);
-    }
-  });
+      dots.forEach((dot, index) => {
+        dot.addEventListener("click", () => update(index));
+      });
 
-  track.addEventListener("pointerdown", event => {
-    if (event.button !== 0) return;
+      document.querySelectorAll("[data-card]").forEach(button => {
+        button.addEventListener("click", () => {
+          if (!swiped) {
+            update(Number(button.dataset.card));
+          }
+        });
+      });
 
-    down = {
-      x: event.clientX,
-      y: event.clientY
-    };
+      track.addEventListener("keydown", event => {
+        if (event.key === "ArrowRight") {
+          event.preventDefault();
+          update(active + 1);
+        }
 
-    swiped = false;
-  });
+        if (event.key === "ArrowLeft") {
+          event.preventDefault();
+          update(active - 1);
+        }
 
-  window.addEventListener("pointerup", event => {
-    if (!down) return;
+        if (event.key === "Home") {
+          event.preventDefault();
+          update(0);
+        }
 
-    const dx = event.clientX - down.x;
-    const dy = event.clientY - down.y;
-
-    if (
-      Math.abs(dx) > 45 &&
-      Math.abs(dx) > Math.abs(dy) * 1.25
-    ) {
-      swiped = true;
-      update(active + (dx < 0 ? 1 : -1));
-    }
-
-    down = null;
-  });
-
-  window.addEventListener("pointercancel", () => {
-    down = null;
-  });
-
-  window.addEventListener("resize", fit);
-
-  if ("ResizeObserver" in window) {
-    new ResizeObserver(fit).observe(track);
-  }
-
-  if (document.fonts) {
-    document.fonts.ready.then(fit);
-  }
-
-  fit();
-
-  // Animações ao rolar
-  if ("IntersectionObserver" in window && !reduced.matches) {
-    document.documentElement.classList.add("motion");
-
-    const observer = new IntersectionObserver(entries => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add("is-visible");
-          observer.unobserve(entry.target);
+        if (event.key === "End") {
+          event.preventDefault();
+          update(slides.length - 1);
         }
       });
-    }, {
-      threshold: 0.05
-    });
 
-    document.querySelectorAll(".reveal").forEach(element => {
-      observer.observe(element);
-    });
-  }
-})();
-</script>
+      track.addEventListener("pointerdown", event => {
+        if (event.button !== 0) return;
+
+        down = {
+          x: event.clientX,
+          y: event.clientY
+        };
+
+        swiped = false;
+      });
+
+      window.addEventListener("pointerup", event => {
+        if (!down) return;
+
+        const dx = event.clientX - down.x;
+        const dy = event.clientY - down.y;
+
+        if (
+          Math.abs(dx) > 45 &&
+          Math.abs(dx) > Math.abs(dy) * 1.25
+        ) {
+          swiped = true;
+          update(active + (dx < 0 ? 1 : -1));
+        }
+
+        down = null;
+      });
+
+      window.addEventListener("pointercancel", () => {
+        down = null;
+      });
+
+      window.addEventListener("resize", fit);
+
+      if ("ResizeObserver" in window) {
+        new ResizeObserver(fit).observe(track);
+      }
+
+      if (document.fonts) {
+        document.fonts.ready.then(fit);
+      }
+
+      fit();
+
+      // Animações de entrada
+
+      if ("IntersectionObserver" in window && !reduced.matches) {
+        document.documentElement.classList.add("motion");
+
+        const observer = new IntersectionObserver(entries => {
+          entries.forEach(entry => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add("is-visible");
+              observer.unobserve(entry.target);
+            }
+          });
+        }, {
+          threshold: 0.05
+        });
+
+        document.querySelectorAll(".reveal").forEach(element => {
+          observer.observe(element);
+        });
+      }
+    })();
+
+    // Janela dos três movimentos
+
+    (() => {
+      const dialog = document.querySelector("#movement-dialog");
+      const tabs = [...dialog.querySelectorAll('[role="tab"]')];
+      const panels = [...dialog.querySelectorAll('[role="tabpanel"]')];
+      const reduced = matchMedia("(prefers-reduced-motion: reduce)");
+
+      let previousOverflow = "";
+      let pressedBackdrop = false;
+
+      function select(index, animate = true) {
+        tabs.forEach((tab, currentIndex) => {
+          const selected = currentIndex === index;
+
+          tab.setAttribute("aria-selected", String(selected));
+          tab.tabIndex = selected ? 0 : -1;
+          panels[currentIndex].hidden = !selected;
+        });
+
+        if (animate && !reduced.matches && panels[index].animate) {
+          panels[index].animate([
+            {
+              opacity: 0,
+              transform: "translateY(6px)"
+            },
+            {
+              opacity: 1,
+              transform: "none"
+            }
+          ], {
+            duration: 260,
+            easing: "ease-out"
+          });
+        }
+      }
+
+      document.querySelectorAll("[data-movement]").forEach(button => {
+        button.addEventListener("click", () => {
+          const index = Number(button.dataset.movement);
+
+          select(index, false);
+
+          previousOverflow = document.body.style.overflow;
+          document.body.style.overflow = "hidden";
+
+          dialog.showModal();
+          tabs[index].focus({ preventScroll: true });
+        });
+      });
+
+      tabs.forEach((tab, index) => {
+        tab.addEventListener("click", () => {
+          select(index);
+        });
+
+        tab.addEventListener("keydown", event => {
+          let nextIndex = index;
+
+          if (event.key === "ArrowRight") {
+            nextIndex = (index + 1) % tabs.length;
+          } else if (event.key === "ArrowLeft") {
+            nextIndex = (index + tabs.length - 1) % tabs.length;
+          } else if (event.key === "Home") {
+            nextIndex = 0;
+          } else if (event.key === "End") {
+            nextIndex = tabs.length - 1;
+          } else {
+            return;
+          }
+
+          event.preventDefault();
+          select(nextIndex);
+          tabs[nextIndex].focus();
+        });
+      });
+
+      dialog.querySelector(".movement-close").addEventListener("click", () => {
+        dialog.close();
+      });
+
+      dialog.addEventListener("pointerdown", event => {
+        const box = dialog.getBoundingClientRect();
+
+        pressedBackdrop =
+          event.clientX < box.left ||
+          event.clientX > box.right ||
+          event.clientY < box.top ||
+          event.clientY > box.bottom;
+      });
+
+      dialog.addEventListener("click", event => {
+        const box = dialog.getBoundingClientRect();
+
+        const outside =
+          event.clientX < box.left ||
+          event.clientX > box.right ||
+          event.clientY < box.top ||
+          event.clientY > box.bottom;
+
+        if (pressedBackdrop && outside) {
+          dialog.close();
+        }
+
+        pressedBackdrop = false;
+      });
+
+      dialog.addEventListener("close", () => {
+        document.body.style.overflow = previousOverflow;
+      });
+    })();
+  </script>
 
 </body>
 </html>
